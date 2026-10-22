@@ -39,4 +39,25 @@ if(n==='phone')return '<h2>个人收藏</h2><div class="card" style="text-align:
 if(n==='settings')return '<h2>设置</h2>'+['飞行模式','Wi‑Fi','蓝牙','通知','墙纸','密码：1118','关于本机 · 사쿠의폰'].map(x=>'<div class="card">'+x+'　›</div>').join('');
 if(n==='safari')return '<h2>收藏</h2>'+[['Weverse','https://weverse.io/'],['YouTube','https://youtube.com/'],['Instagram','https://instagram.com/'],['Spotify','https://open.spotify.com/']].map(x=>'<a class="card" style="display:block;color:#8a5470;text-decoration:none" href="'+x[1]+'" target="_blank">'+x[0]+'　↗</a>').join('');
 const links={weverse:'https://weverse.io/',instagram:'https://instagram.com/',x:'https://x.com/',youtube:'https://youtube.com/'};return '<h2>'+titles[n]+'</h2><div class="card">사쿠의 업데이트를 기다리는 중… ♡<p class="muted">粉丝制作的模拟界面，不连接真实账号。</p><a href="'+(links[n]||'#')+'" target="_blank">打开官方应用网站 ↗</a></div>'}
+</script>
+<style>
+#lock{touch-action:pan-y; -webkit-user-select:none;user-select:none}
+#swipe{cursor:pointer;touch-action:manipulation;pointer-events:auto}
+</style>
+<script>
+/* Independent unlock fallback: works even if the original gesture handler fails. */
+(function(){
+  const lock=document.getElementById('lock');
+  const pass=document.getElementById('passcode');
+  const swipe=document.getElementById('swipe');
+  if(!lock||!pass)return;
+  let y=null,unlocked=false;
+  function show(){if(unlocked)return;unlocked=true;pass.style.display='block';}
+  lock.addEventListener('pointerdown',e=>{y=e.clientY;},{passive:true});
+  lock.addEventListener('pointerup',e=>{if(y!==null&&y-e.clientY>20)show();y=null;},{passive:true});
+  lock.addEventListener('touchstart',e=>{y=e.touches[0].clientY;},{passive:true});
+  lock.addEventListener('touchend',e=>{if(y!==null&&y-e.changedTouches[0].clientY>20)show();y=null;},{passive:true});
+  if(swipe){swipe.addEventListener('click',show);swipe.addEventListener('pointerup',show);}
+  lock.addEventListener('click',e=>{if(e.target===lock||e.target===swipe)show();});
+})();
 </script></body></html>
