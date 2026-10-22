@@ -705,7 +705,7 @@ function toast(s){
 let currentApp=null, appStack=[], appTileAnim=null;
 const appview=$('appview'), appcontent=$('appcontent'), apptitle=$('apptitle'), appbar=$('appbar'), backBtn=$('backBtn');
 const titles = {
-  messages:'信息', kakao:'카카오톡', spotify:'Spotify', weverse:'Weverse',
+  messages:'信息', chat:'사쿠', kakao:'카카오톡', spotify:'Spotify', weverse:'Weverse',
   instagram:'Instagram', x:'X', youtube:'YouTube', photos:'照片',
   notes:'备忘录', calendar:'日历', clock:'时钟', settings:'设置',
   phone:'电话', safari:'Safari',
@@ -777,6 +777,7 @@ screen.addEventListener('pointerup',e=>{
 function render(n,opts={}){
   switch(n){
     case 'messages': return renderMessages();
+    case 'chat': return renderChat(opts.with||'sakuya');
     case 'kakao': return renderKakaoList();
     case 'kakaoChat': return renderKakaoChat(opts.with||'sakuya');
     case 'spotify': return renderSpotifyHome();
@@ -819,45 +820,36 @@ function renderMessages(){
   <div class="chatlist-item"><div class="avatar">🐻</div><div class="meta"><b>친구들</b><div class="last">好可爱的猫!</div></div><time>周一</time></div>
   `;
 }
-function enterChat(who){
+function renderChat(who){
   const msgs = messagesStore[who]||messagesStore.sakuya;
-  const name = who==='fanclub'?'사쿠 팬방':'사쿠';
-  const avatar = who==='fanclub'?'🌸':'🐰';
-  appStack.push('chat'); // push placeholder so back returns
-  apptitle.textContent = name;
-  appcontent.innerHTML = `
+  return `
     <div id="chatlog">
       <div class="msg-date">今天</div>
       ${msgs.map(m=>`
         <div class="msg-time ${m.me?'me':''}">
-          ${m.me?'':'<div class="avatar" style="width:26px;height:26px;font-size:14px;border-radius:50%">${avatar}</div>'}
-          <div class="msg ${m.me?'me them':''}">${m.text}</div>
+          <div class="msg ${m.me?'me':''}">${m.text}</div>
           <span class="tm">${m.time}</span>
         </div>
       `).join('')}
     </div>
     <div class="compose"><input id="chatinput" placeholder="iMessage"><button id="chatsend">发送</button></div>
   `;
-  appview.classList.add('show');
-  backBtn.textContent='‹ '+titles.messages;
-  // scroll bottom
-  setTimeout(()=>{ const cl=$('chatlog'); if(cl) cl.scrollTop=cl.scrollHeight; },50);
-  const send=()=>{
-    const inp=$('chatinput'); const val=inp.value.trim(); if(!val) return;
-    const now=new Date(); const hh=String(now.getHours()).padStart(2,'0'), mm=String(now.getMinutes()).padStart(2,'0');
-    msgs.push({me:true, time:hh+':'+mm, text:val});
-    inp.value='';
-    // auto reply
-    setTimeout(()=>{
-      const replies=['ㅋㅋㅋ 너무 웃겨요 ♡','오늘 하루도 수고했어요!','그래요! 내일 봐요 🐰','사랑해요 팬아!','힘내서 응원해줘서 고마워요'];
-      const r=replies[Math.floor(Math.random()*replies.length)];
-      msgs.push({me:false,time:hh+':'+mm,text:r});
-      enterChat(who);
-    },900);
+}
+function enterChat(who){ openApp('chat', {with:who}); }
+function doSendChat(who){
+  const msgs = messagesStore[who]||messagesStore.sakuya;
+  const inp=$('chatinput'); const val=inp.value.trim(); if(!val) return;
+  const now=new Date(); const hh=String(now.getHours()).padStart(2,'0'), mm=String(now.getMinutes()).padStart(2,'0');
+  msgs.push({me:true, time:hh+':'+mm, text:val});
+  inp.value='';
+  // auto reply
+  setTimeout(()=>{
+    const replies=['ㅋㅋㅋ 너무 웃겨요 ♡','오늘 하루도 수고했어요!','그래요! 내일 봐요 🐰','사랑해요 팬아!','힘내서 응원해줘서 고마워요'];
+    const r=replies[Math.floor(Math.random()*replies.length)];
+    msgs.push({me:false,time:hh+':'+mm,text:r});
     enterChat(who);
-  };
-  $('chatsend').onclick=send;
-  $('chatinput').addEventListener('keydown',e=>{ if(e.key==='Enter') send(); });
+  },900);
+  enterChat(who);
 }
 
 /* ---------- KakaoTalk ---------- */
@@ -914,34 +906,18 @@ function renderKakaoChat(who){
     <button id="ktsend">发送</button>
   </div>`;
 }
-function enterKakaoChat(who){
-  appStack.push('kakaoChat'); appStack.push(who);
-  apptitle.textContent = kakaoChats[who].name;
-  appcontent.innerHTML = renderKakaoChat(who);
-  // scroll to bottom
-  setTimeout(()=>{ const e=$('ktchatlog'); if(e) e.scrollTop=e.scrollHeight; },60);
-  const send=()=>{
-    const inp=$('ktinput'); const val=inp.value.trim(); if(!val) return;
-    const now=new Date();
-    kakaoChats[who].msgs.push({me:true,time:'방금',text:val}); inp.value='';
-    setTimeout(()=>{
-      const replies=['ㅋㅋㅋ 너무 웃겨요 ♡','오늘 하루도 수고했어요!','그래요! 내일 봐요 🐰','사랑해요 팬아!','사쿠야 고마워 😍'];
-      const r=replies[Math.floor(Math.random()*replies.length)];
-      kakaoChats[who].msgs.push({me:false,time:'방금',text:r});
-      enterKakaoChat(who);
-    },900);
+function enterKakaoChat(who){ openApp('kakaoChat', {with:who}); }
+function doSendKakao(who){
+  const c=kakaoChats[who]||kakaoChats.sakuya;
+  const inp=$('ktinput'); const val=inp.value.trim(); if(!val) return;
+  c.msgs.push({me:true,time:'방금',text:val}); inp.value='';
+  setTimeout(()=>{
+    const replies=['ㅋㅋㅋ 너무 웃겨요 ♡','오늘 하루도 수고했어요!','그래요! 내일 봐요 🐰','사랑해요 팬아!','사쿠야 고마워 😍'];
+    const r=replies[Math.floor(Math.random()*replies.length)];
+    c.msgs.push({me:false,time:'방금',text:r});
     enterKakaoChat(who);
-  };
-  $('ktsend').onclick=send;
-  $('ktinput').addEventListener('keydown',e=>{ if(e.key==='Enter') send(); });
-  $('ktBack').onclick=()=>{
-    // pop two (who, kakaoChat), back to kakao
-    appStack.pop(); appStack.pop();
-    apptitle.textContent=titles.kakao;
-    appcontent.innerHTML=renderKakaoList();
-    appview.classList.add('show');
-    wireApp('kakao');
-  };
+  },900);
+  enterKakaoChat(who);
 }
 
 /* ---------- Spotify ---------- */
@@ -1148,16 +1124,29 @@ function renderExternal(n){
    WIRE — app-specific listeners after DOM insertion
    ================================================================ */
 function wireApp(name,opts={}){
+  const who = opts.with || 'sakuya';
   switch(name){
     case 'messages':
       appcontent.querySelectorAll('[data-chat]').forEach(el=>el.addEventListener('click',()=>enterChat(el.dataset.chat)));
       break;
+    case 'chat':
+      backBtn.textContent='‹ '+titles.messages;
+      setTimeout(()=>{ const cl=$('chatlog'); if(cl) cl.scrollTop=cl.scrollHeight; },50);
+      $('chatsend').onclick=()=>doSendChat(who);
+      $('chatinput').addEventListener('keydown',e=>{ if(e.key==='Enter') doSendChat(who); });
+      break;
     case 'kakao':
       appcontent.querySelectorAll('[data-kt]').forEach(el=>el.addEventListener('click',()=>enterKakaoChat(el.dataset.kt)));
       break;
+    case 'kakaoChat':
+      setTimeout(()=>{ const e=$('ktchatlog'); if(e) e.scrollTop=e.scrollHeight; },60);
+      $('ktsend').onclick=()=>doSendKakao(who);
+      $('ktinput').addEventListener('keydown',e=>{ if(e.key==='Enter') doSendKakao(who); });
+      $('ktBack').onclick=()=>backBtn.click();
+      break;
     case 'spotify':
       appcontent.querySelectorAll('[data-track]').forEach(el=>el.addEventListener('click',()=>{
-        const i=+el.dataset.t, t=spotifyTracks[i];
+        const i=+el.dataset.track, t=spotifyTracks[i];
         spNowPlaying={...spNowPlaying,title:t.title,artist:t.artist,emoji:t.emoji,durSec:parseTime(t.dur),playedSec:0,playing:true};
         $('spMiniTitle').textContent=t.title;
         openApp('spotifyPlayer');
@@ -1169,10 +1158,7 @@ function wireApp(name,opts={}){
       if(pb){
         pb.onclick=()=>{ spNowPlaying.playing=!spNowPlaying.playing; pb.textContent=spNowPlaying.playing?'Ⅱ':'▶'; };
       }
-      $('spClose')?.addEventListener('click',()=>{
-        appStack.pop(); // pop spotifyPlayer
-        openApp('spotify');
-      });
+      $('spClose')?.addEventListener('click',()=>backBtn.click());
       $('spProgress')?.addEventListener('click',e=>{
         const rect=e.currentTarget.getBoundingClientRect();
         const pct=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width));
