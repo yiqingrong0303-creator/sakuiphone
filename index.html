@@ -71,7 +71,7 @@ img{display:block;max-width:100%}
     var(--wallpaper1) center/cover no-repeat;
   transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);
 }
-#lock.hidden{opacity:0;transform:scale(1.05);pointer-events:none}
+#lock.hidden{opacity:0;transform:scale(1.05);pointer-events:none;visibility:hidden;transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),visibility 0s .6s}
 .lockdate{margin-top:90px;font-size:20px;font-weight:500;letter-spacing:.3px;
   text-shadow:0 2px 20px rgba(0,0,0,.45)}
 .locktime{font-size:clamp(92px,24vw,116px);font-weight:250;letter-spacing:-7px;line-height:1;
@@ -116,10 +116,10 @@ img{display:block;max-width:100%}
   background:
     linear-gradient(rgba(20,16,25,.4),rgba(20,16,25,.55)),
     var(--wallpaper2) center/cover no-repeat;color:#fff;
-  display:flex;flex-direction:column;align-items:center;
+  display:none;flex-direction:column;align-items:center;
   transform:translateY(100%);transition:transform .45s cubic-bezier(.22,1,.36,1)
 }
-#passcode.show{transform:translateY(0)}
+#passcode.show{display:flex;transform:translateY(0)}
 #passcode.shake{animation:shake .45s ease}
 @keyframes shake{10%,90%{transform:translateX(-4px)}20%,80%{transform:translateX(8px)}
   30%,50%,70%{transform:translateX(-10px)}40%,60%{transform:translateX(10px)}}
@@ -259,7 +259,8 @@ img{display:block;max-width:100%}
 .appbar.darkbar .back{background:rgba(255,255,255,.12);color:#fff}
 .appbar .title{font-size:16px;font-weight:600}
 .appbar .more{color:#999;font-size:18px;padding:4px 8px}
-.appcontent{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.appcontent{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;background:#fff}
+.kakao-app .appcontent{background:#fff}
 .appcontent h2{font-size:28px;margin:6px 0 14px;font-weight:700}
 .appcontent h3{font-size:18px;margin:18px 0 10px;font-weight:600}
 .muted{color:#927f8b;font-size:12px}
@@ -334,7 +335,7 @@ img{display:block;max-width:100%}
 .spotify-app #appview{background:#121212}
 .spotify-app .appbar{background:#121212;color:#fff;border-color:#121212}
 .spotify-app .appbar .back{background:rgba(255,255,255,.12);color:#fff}
-.spotify-app .appcontent{background:linear-gradient(180deg,#1f1f25 0%,#121212 250px);color:#fff;padding:0}
+.spotify-app .appcontent{background:linear-gradient(180deg,#1f1f25 0%,#121212 250px);background-color:#121212;color:#fff;padding:0}
 .sp-top{display:flex;justify-content:space-between;align-items:center;padding:10px 18px}
 .sp-top b{font-size:26px;font-weight:800}
 .sp-top .actions{display:flex;gap:16px;font-size:18px;color:#ddd}
