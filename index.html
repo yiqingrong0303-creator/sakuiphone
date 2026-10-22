@@ -1,91 +1,1267 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#f5dfe8"><title>사쿠의폰</title>
+<html lang="ko-KR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#111">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>사쿠의폰 · Sakuya's Phone</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#e9e5e8;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",sans-serif;color:#17151a;display:grid;place-items:center;min-height:100svh}.device{width:min(402px,100vw);height:min(874px,100svh);min-height:620px;background:#111;border-radius:54px;padding:9px;box-shadow:0 22px 65px #51404d55;position:relative}.island{position:absolute;z-index:20;top:17px;left:50%;transform:translateX(-50%);width:118px;height:34px;border-radius:22px;background:#080808}.screen{height:100%;border-radius:46px;overflow:hidden;position:relative;background:#f8e9ef}.status{height:48px;padding:12px 27px 0;display:flex;justify-content:space-between;font-size:14px;font-weight:650;position:relative;z-index:5}.status .right{letter-spacing:2px}.lock{position:absolute;inset:0;color:white;text-align:center;background:linear-gradient(#0002,#0002),url('https://images.unsplash.com/photo-1770306924428-588e30d114f0?auto=format&fit=crop&fm=jpg&q=85&w=1600') center/cover}.lock:after{content:"";position:absolute;inset:0;background:linear-gradient(#0001,#0003 60%,#0004)}.lock>*{position:relative;z-index:1}.lock .status{color:#fff}.lockdate{margin-top:80px;font-size:19px;font-weight:500;text-shadow:0 1px 8px #555}.locktime{font-size:86px;font-weight:250;letter-spacing:-5px;line-height:1.15;text-shadow:0 2px 12px #555}.lockmsg{margin-top:10px;font-size:13px;text-shadow:0 1px 8px #555}.swipe{position:absolute;bottom:54px;left:0;right:0;font-size:13px;text-shadow:0 1px 8px #555;animation:bob 1.8s infinite}.chev{font-size:23px;display:block;margin-bottom:7px}@keyframes bob{50%{transform:translateY(-5px)}}.flash{position:absolute;bottom:24px;left:28px;width:46px;height:46px;border-radius:50%;background:#ffffff40;backdrop-filter:blur(10px);display:grid;place-items:center;font-size:20px}.camera{position:absolute;bottom:24px;right:28px;width:46px;height:46px;border-radius:50%;background:#ffffff40;backdrop-filter:blur(10px);display:grid;place-items:center;font-size:20px}.home{display:none;position:absolute;inset:0;background:linear-gradient(#f8e9efdd,#f0dce9ee),url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900') center/cover}.home .status{color:#26202a}.homehead{padding:28px 24px 18px;display:flex;justify-content:space-between;align-items:end}.homehead h2{font-size:24px;margin:0;font-weight:650}.homehead small{color:#74616e}.widget{margin:0 18px 25px;padding:16px 18px;background:#ffffffa8;backdrop-filter:blur(22px);border:1px solid #ffffff9c;border-radius:23px;display:flex;justify-content:space-between;align-items:center}.widget strong{font-size:30px;font-weight:500}.widget .saku{font-size:35px}.grid{padding:0 17px;display:grid;grid-template-columns:repeat(4,1fr);gap:21px 8px}.app{border:0;background:none;color:#302932;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;text-shadow:0 1px 5px white}.appicon{width:59px;height:59px;border-radius:17px;background:linear-gradient(145deg,#fff,#f4e7ee);box-shadow:0 5px 12px #73566b25;display:grid;place-items:center;font-size:27px;border:1px solid #fff9}.dock{position:absolute;bottom:17px;left:13px;right:13px;height:83px;border-radius:27px;background:#ffffff80;backdrop-filter:blur(22px);display:flex;justify-content:space-evenly;align-items:center}.dock .appicon{width:53px;height:53px}.appview{display:none;position:absolute;inset:0;background:#fffafc;z-index:8;overflow:auto;padding-bottom:30px}.appbar{height:60px;padding:16px 17px 8px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee5eb;position:sticky;top:0;background:#fffafcf2;backdrop-filter:blur(15px);z-index:2}.appbar button{border:0;background:#f4e8ee;border-radius:18px;padding:8px 13px;color:#9a5e7b;font-size:14px}.appbar b{font-size:16px}.content{padding:18px}.content h2{font-size:27px;margin:5px 0 18px}.card{background:#f7edf2;border-radius:20px;padding:16px;margin:12px 0}.muted{color:#927f8b;font-size:12px}.chatrow{display:flex;gap:10px;align-items:center;padding:14px 3px;border-bottom:1px solid #f0e8ed}.avatar{width:43px;height:43px;border-radius:50%;background:#efd6e2;display:grid;place-items:center;font-size:20px}.msg{max-width:82%;padding:11px 14px;background:#f3e6ed;border-radius:18px;margin:9px 0;font-size:14px}.msg.me{background:#f4d8e5;margin-left:auto}.compose{display:flex;gap:8px;margin-top:15px}.compose input{flex:1;min-width:0;border:1px solid #eadde4;border-radius:22px;padding:12px;font:inherit}.compose button,.pill{border:0;border-radius:20px;background:#e9c9d8;padding:10px 15px;color:#624255}.notes{width:100%;min-height:65vh;border:0;outline:0;resize:none;background:#fff8e8;border-radius:18px;padding:18px;font:16px/1.7 -apple-system,sans-serif}.photoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.photoGrid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:9px}.homebar{position:absolute;z-index:15;bottom:8px;left:50%;transform:translateX(-50%);width:135px;height:5px;border-radius:5px;background:#ffffffdd}.appview .homebar{background:#222}.passcode{display:none;position:absolute;inset:0;z-index:12;background:#f6e9efed;backdrop-filter:blur(30px);text-align:center;padding-top:95px}.passcode h3{font-weight:500;font-size:20px}.dots{display:flex;justify-content:center;gap:17px;margin:24px}.dot{width:11px;height:11px;border:1px solid #554451;border-radius:50%}.dot.filled{background:#554451}.pad{display:grid;grid-template-columns:repeat(3,68px);justify-content:center;gap:13px}.pad button{height:62px;border:0;border-radius:50%;background:#ffffffb5;font-size:24px;color:#41323e}.toast{position:absolute;top:55px;left:50%;transform:translateX(-50%);background:#222b;color:white;padding:8px 15px;border-radius:18px;font-size:12px;z-index:30;display:none}
+/* =========================================================
+   RESET & BASE
+   ========================================================= */
+*,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;height:100%;width:100%;overflow:hidden;background:#0b0b0d;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",
+  "Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:#17151a;
+  -webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none;
+  overscroll-behavior:none;touch-action:manipulation}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+input,textarea{font:inherit;border:0;outline:0}
+img{display:block;max-width:100%}
+:root{
+  --pink:#f8b3c8;--pink-soft:#fde6ef;--pink-deep:#c96f90;
+  --wallpaper1:url('https://images.unsplash.com/photo-1770306924428-588e30d114f0?auto=format&fit=crop&fm=jpg&q=85&w=1600');
+  --wallpaper2:url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=90');
+}
 
-/* KakaoTalk / Spotify detailed app replicas */
-.kakao{background:#fee500!important;color:#191919!important}.spotifyIcon{background:#111!important;color:#1ed760!important}.appicon.kakao:after{content:"";width:30px;height:22px;background:#191919;border-radius:50%;display:block;clip-path:polygon(0 0,100% 0,100% 80%,42% 80%,20% 100%,23% 80%,0 80%)}.appicon.spotifyIcon:after{content:"≋";font-size:45px;font-weight:900;color:#1ed760;transform:rotate(-10deg)}
-.kt-head{display:flex;justify-content:space-between;align-items:center;padding:10px 2px 17px}.kt-head h2{margin:0;font-size:29px}.kt-tabs{display:flex;gap:20px;border-bottom:1px solid #eee;padding:8px 0 13px;font-size:14px}.kt-row{display:flex;align-items:center;gap:12px;padding:13px 2px;border-bottom:1px solid #f2edf0}.kt-avatar{width:48px;height:48px;border-radius:18px;background:#f5d9e5;display:grid;place-items:center;font-size:24px}.kt-bottom{position:sticky;bottom:-20px;background:#fff;display:flex;justify-content:space-around;padding:17px 0 8px;color:#777}.kt-bottom span{text-align:center;font-size:11px}.kt-bottom b{display:block;font-size:22px;color:#333}.kt-chathead{display:flex;align-items:center;gap:12px;padding:8px 0 18px}.kt-chatbg{background:#abc5d8;margin:0 -18px;padding:15px 16px;min-height:48vh}.kt-bubble{background:#fff;border-radius:4px 15px 15px 15px;padding:10px 13px;margin:10px 0;width:max-content;max-width:82%;font-size:14px}.kt-bubble.me{margin-left:auto;background:#fee500;border-radius:15px 4px 15px 15px}.spotify{background:#121212;color:#fff;margin:-18px;padding:20px 18px 35px;min-height:85vh}.sp-top{display:flex;justify-content:space-between;align-items:center}.sp-chip{border-radius:18px;background:#333;padding:8px 13px;font-size:13px}.sp-card{display:flex;align-items:center;gap:12px;background:#292929;border-radius:7px;overflow:hidden;margin:9px 0;font-weight:600}.sp-cover{width:65px;height:65px;display:grid;place-items:center;background:linear-gradient(135deg,#e7b8cb,#59445b);font-size:27px}.sp-album{width:100%;aspect-ratio:1;background:linear-gradient(135deg,#e5b4cb,#30202f);display:grid;place-items:center;font-size:100px;margin:24px 0;border-radius:5px}.sp-controls{display:flex;align-items:center;justify-content:space-between;font-size:25px;padding:20px 0}.sp-play{width:58px;height:58px;border-radius:50%;background:#1ed760;color:#111;display:grid;place-items:center;font-size:27px;border:0}.sp-progress{height:4px;background:#555;border-radius:5px;margin:12px 0}.sp-progress i{display:block;width:36%;height:4px;background:#fff;border-radius:5px}
-</style></head><body><main class="device"><div class="island"></div><div class="screen" id="screen">
-<section class="lock" id="lock"><div class="status"><span id="lockclock">15:15</span><span class="right">▮▮▮　◉　▰</span></div><div class="lockdate" id="lockdate">10月22日 星期四</div><div class="locktime" id="bigtime">15:15</div><div class="lockmsg">사쿠의 작은 세계에 오신 걸 환영해요 ♡</div><div class="flash">🔦</div><div class="camera">📷</div><div class="swipe" id="swipe"><span class="chev">⌃</span>向上轻扫以解锁</div></section>
-<section class="passcode" id="passcode"><div class="status"><span id="pclock">15:15</span><span>▮▮▮　◉　▰</span></div><h3>输入密码</h3><div class="dots" id="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="pad" id="pad"><button type="button" data-key="1">1</button><button type="button" data-key="2">2</button><button type="button" data-key="3">3</button><button type="button" data-key="4">4</button><button type="button" data-key="5">5</button><button type="button" data-key="6">6</button><button type="button" data-key="7">7</button><button type="button" data-key="8">8</button><button type="button" data-key="9">9</button><span class="pad-empty"></span><button type="button" data-key="0">0</button><button type="button" class="delete-key" data-key="⌫">删除</button></div><p class="muted">提示：1118</p></section>
-<section class="home" id="home"><div class="status"><span id="homeclock">15:15</span><span class="right">▮▮▮　◉　▰</span></div><div class="homehead"><div><small>10月22日 星期四</small><h2>사쿠의폰 ♡</h2></div><span>🌸</span></div><div class="widget"><div><small>今日心情</small><br><strong>좋은 하루!</strong><div class="muted">今天也要开心呀</div></div><span class="saku">🐰</span></div><div class="grid">
-<button class="app" data-app="messages"><span class="appicon">💬</span>信息</button><button class="app" data-app="kakao"><span class="appicon kakao">●</span>KakaoTalk</button><button class="app" data-app="weverse"><span class="appicon">💜</span>Weverse</button><button class="app" data-app="instagram"><span class="appicon">📸</span>Instagram</button><button class="app" data-app="x"><span class="appicon">𝕏</span>X</button><button class="app" data-app="youtube"><span class="appicon">▶️</span>YouTube</button><button class="app" data-app="spotify"><span class="appicon spotifyIcon"></span>Spotify</button><button class="app" data-app="photos"><span class="appicon">🌈</span>照片</button><button class="app" data-app="notes"><span class="appicon">📝</span>备忘录</button><button class="app" data-app="calendar"><span class="appicon">📅</span>日历</button><button class="app" data-app="clock"><span class="appicon">⏰</span>时钟</button><button class="app" data-app="settings"><span class="appicon">⚙️</span>设置</button></div><div class="dock"><button class="app" data-app="phone"><span class="appicon">📞</span></button><button class="app" data-app="messages"><span class="appicon">💬</span></button><button class="app" data-app="safari"><span class="appicon">🧭</span></button><button class="app" data-app="music"><span class="appicon">🎵</span></button></div></section>
-<section class="appview" id="appview"><div class="appbar"><button id="back">‹ 主屏幕</button><b id="apptitle">应用</b><span>•••</span></div><div class="content" id="appcontent"></div><div class="homebar"></div></section><div class="toast" id="toast"></div><div class="homebar" id="homebar"></div></div></main>
+/* =========================================================
+   DEVICE FRAME
+   ========================================================= */
+.device{
+  position:relative;width:100vw;height:100dvh;
+  max-width:430px;margin:0 auto;background:#0a0a0c;
+  box-shadow:0 0 60px #000;overflow:hidden;
+}
+@media(min-width:431px){
+  body{display:grid;place-items:center;background:radial-gradient(circle at center,#2a2530,#0a0a0c 80%)}
+  .device{height:min(900px,95dvh);border-radius:56px;padding:9px;
+    box-shadow:0 30px 80px #000,0 0 0 2px #1f1a22 inset}
+  .device::before{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);
+    width:122px;height:36px;border-radius:22px;background:#000;z-index:1000}
+}
+.screen{position:relative;width:100%;height:100%;overflow:hidden;background:#f8e9ef}
+
+/* =========================================================
+   STATUS BAR
+   ========================================================= */
+.status{
+  height:44px;padding:14px 26px 0;display:flex;justify-content:space-between;
+  align-items:center;font-size:14px;font-weight:600;position:relative;z-index:10
+}
+.status .right{letter-spacing:2px;display:flex;gap:5px;align-items:center}
+.status .right .signal::before{content:"▮▮▮";letter-spacing:-1px}
+.status .right .carrier{font-size:12px;font-weight:500}
+.status .right .battery{display:inline-block;width:24px;height:11px;border:1px solid currentColor;
+  border-radius:3px;position:relative;margin-left:2px;opacity:.9}
+.status .right .battery::before{content:"";position:absolute;top:1px;left:1px;bottom:1px;right:4px;
+  background:currentColor;border-radius:1px}
+.status .right .battery::after{content:"";position:absolute;right:-3px;top:3px;width:2px;height:5px;
+  background:currentColor;border-radius:0 1px 1px 0}
+.status.dark{color:#fff}
+
+/* =========================================================
+   LOCK SCREEN
+   ========================================================= */
+#lock{
+  position:absolute;inset:0;color:#fff;text-align:center;z-index:10;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.18) 0%,transparent 28%,rgba(0,0,0,.15) 62%,rgba(0,0,0,.35) 100%),
+    var(--wallpaper1) center/cover no-repeat;
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);
+}
+#lock.hidden{opacity:0;transform:scale(1.05);pointer-events:none}
+.lockdate{margin-top:90px;font-size:20px;font-weight:500;letter-spacing:.3px;
+  text-shadow:0 2px 20px rgba(0,0,0,.45)}
+.locktime{font-size:clamp(92px,24vw,116px);font-weight:250;letter-spacing:-7px;line-height:1;
+  font-variant-numeric:tabular-nums;text-shadow:0 3px 30px rgba(0,0,0,.5);margin-top:2px}
+.lockmsg{
+  display:inline-block;margin-top:14px;padding:9px 18px;
+  border:1px solid rgba(255,255,255,.45);border-radius:22px;
+  background:rgba(255,255,255,.2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  font-size:13px;font-weight:500;text-shadow:0 1px 6px rgba(0,0,0,.3)
+}
+.lock-widgets{
+  position:absolute;left:20px;right:20px;top:255px;
+  display:flex;gap:12px
+}
+.lock-widgets .lw{
+  flex:1;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+  border-radius:18px;padding:10px 12px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  text-align:left;font-size:11px
+}
+.lock-widgets .lw b{display:block;font-size:14px;margin-top:2px}
+.flash,.camera{
+  position:absolute;bottom:30px;width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.4);display:grid;place-items:center;font-size:18px
+}
+.flash{left:28px}.camera{right:28px}
+.swipe-hint{
+  position:absolute;bottom:86px;left:0;right:0;font-size:12px;font-weight:500;
+  text-shadow:0 1px 8px rgba(0,0,0,.5);animation:swipeBob 2s ease-in-out infinite;
+  touch-action:none;cursor:pointer
+}
+.swipe-hint .chev{display:block;font-size:22px;font-weight:700;margin-bottom:4px;
+  animation:chevrondown 1.6s ease-in-out infinite}
+@keyframes chevrondown{0%,100%{transform:translateY(-4px);opacity:.4}50%{transform:translateY(4px);opacity:1}}
+@keyframes swipeBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* =========================================================
+   PASSCODE
+   ========================================================= */
+#passcode{
+  position:absolute;inset:0;z-index:15;text-align:center;padding-top:0;
+  background:
+    linear-gradient(rgba(20,16,25,.4),rgba(20,16,25,.55)),
+    var(--wallpaper2) center/cover no-repeat;color:#fff;
+  display:flex;flex-direction:column;align-items:center;
+  transform:translateY(100%);transition:transform .45s cubic-bezier(.22,1,.36,1)
+}
+#passcode.show{transform:translateY(0)}
+#passcode.shake{animation:shake .45s ease}
+@keyframes shake{10%,90%{transform:translateX(-4px)}20%,80%{transform:translateX(8px)}
+  30%,50%,70%{transform:translateX(-10px)}40%,60%{transform:translateX(10px)}}
+#passcode::before{content:"";position:absolute;inset:0;background:rgba(18,15,22,.45);
+  backdrop-filter:blur(36px);-webkit-backdrop-filter:blur(36px);pointer-events:none;z-index:0}
+#passcode>*{position:relative;z-index:1}
+.passcode-head h3{font-size:20px;font-weight:550;margin:44px 0 0}
+.dots{display:flex;justify-content:center;gap:18px;margin:28px 0 30px}
+.dot{width:11px;height:11px;border:1.2px solid rgba(255,255,255,.85);
+  border-radius:50%;background:transparent;transition:all .15s}
+.dot.filled{background:#fff;transform:scale(1.1)}
+.dot.wrong{background:#ff5a5f;border-color:#ff5a5f;animation:dotWrong .3s}
+@keyframes dotWrong{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
+.pad{
+  display:grid;grid-template-columns:repeat(3,minmax(0,74px));
+  gap:12px 18px;justify-content:center;align-items:center;margin-top:4px
+}
+.pad button{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);
+  color:#fff;font-size:30px;font-weight:300;letter-spacing:-1px;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  transition:transform .15s,background .15s;touch-action:manipulation
+}
+.pad button:active{background:rgba(255,255,255,.55);transform:scale(.93)}
+.pad-empty{width:72px;height:72px}
+.pad .delete-key{
+  background:transparent;border:0;font-size:13px;font-weight:500;
+  backdrop-filter:none;-webkit-backdrop-filter:none
+}
+.passcode .muted{color:rgba(255,255,255,.8);margin-top:22px;font-size:12px}
+.passcode-footer{margin-top:auto;padding-bottom:38px;display:flex;gap:32px;
+  color:rgba(255,255,255,.8);font-size:11px}
+@media(max-height:700px){
+  .passcode-head h3{margin-top:26px}.dots{margin:16px 0 22px}
+  .pad{gap:8px 14px}.pad button,.pad-empty{width:62px;height:62px;font-size:26px}
+}
+
+/* =========================================================
+   HOME SCREEN
+   ========================================================= */
+#home{
+  position:absolute;inset:0;display:none;flex-direction:column;z-index:8;
+  background:
+    linear-gradient(180deg,rgba(248,233,239,.65),rgba(240,220,233,.8)),
+    var(--wallpaper2) center/cover no-repeat;
+  animation:homeIn .5s cubic-bezier(.22,1,.36,1) both;
+}
+#home.show{display:flex;animation:homeIn .7s cubic-bezier(.22,1,.36,1) both}
+@keyframes homeIn{from{opacity:0;transform:scale(.97) translateY(20px)}to{opacity:1;transform:none}}
+.home-title{padding:10px 24px 4px;display:flex;justify-content:space-between;align-items:center}
+.home-title small{color:#74616e;font-size:11px}
+.home-title h2{font-size:26px;margin:4px 0 0;font-weight:700;letter-spacing:.5px}
+.home-title .emo{font-size:28px}
+
+/* Widget */
+.widget{
+  margin:14px 18px 20px;padding:14px 18px;border-radius:22px;
+  background:rgba(255,255,255,.75);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border:1px solid rgba(255,255,255,.9);
+  display:flex;justify-content:space-between;align-items:center;
+  box-shadow:0 4px 20px rgba(180,130,150,.15);
+  animation:widgetIn .7s .1s cubic-bezier(.22,1,.36,1) both
+}
+@keyframes widgetIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.widget strong{font-size:26px;font-weight:500;display:block;margin:2px 0}
+.widget .saku{font-size:38px}
+
+/* App grid */
+.grid{
+  flex:1;padding:8px 16px 0;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:18px 4px;align-content:start;
+  animation:gridIn .7s .2s cubic-bezier(.22,1,.36,1) both
+}
+@keyframes gridIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.app{
+  border:0;background:none;color:#302932;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  font-size:11px;font-weight:500;text-shadow:0 1px 3px rgba(255,255,255,.6);
+  transition:transform .15s
+}
+.app:active{transform:scale(.9)}
+.appicon{
+  width:60px;height:60px;border-radius:16px;
+  background:linear-gradient(145deg,#fff,#f4e7ee);
+  box-shadow:0 4px 12px rgba(115,86,107,.25),inset 0 0 0 1px rgba(255,255,255,.9);
+  display:grid;place-items:center;font-size:26px;position:relative;overflow:hidden
+}
+.appicon.kakao{background:#fee500!important;color:#191919}
+.appicon.kakao::after{
+  content:"";width:30px;height:22px;background:#191919;border-radius:50%;
+  clip-path:polygon(0 0,100% 0,100% 78%,42% 78%,22% 100%,24% 78%,0 78%);
+  box-shadow:-1px -1px 0 #fee500
+}
+.appicon.spotify{background:#000!important;color:#1ed760}
+.appicon.spotify::after{
+  content:"";position:relative;width:30px;height:30px;border-radius:50%;
+  box-shadow:inset 0 0 0 0 #1ed760,0 2px 0 0 #1ed760,0 8px 0 -2px #1ed760,0 14px 0 -4px #1ed760
+}
+
+/* Dock */
+.dock{
+  margin:10px 14px 18px;height:78px;border-radius:28px;
+  background:rgba(255,255,255,.55);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,.75);
+  display:flex;justify-content:space-evenly;align-items:center;
+  animation:dockIn .7s .3s cubic-bezier(.22,1,.36,1) both
+}
+@keyframes dockIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.dock .appicon{width:52px;height:52px;border-radius:14px;box-shadow:none}
+
+/* =========================================================
+   APP VIEW (overlay)
+   ========================================================= */
+#appview{
+  position:absolute;inset:0;display:none;flex-direction:column;z-index:9;
+  background:#fff;overflow:hidden;border-radius:inherit;
+  animation:appIn .35s cubic-bezier(.22,1,.36,1) both
+}
+#appview.show{display:flex}
+#appview.closing{animation:appOut .3s cubic-bezier(.4,0,1,1) both}
+@keyframes appIn{from{opacity:.95;transform:scale(1.04)}to{opacity:1;transform:none}}
+@keyframes appOut{from{opacity:1;transform:none}to{opacity:.95;transform:scale(1.04) translateY(20px)}}
+.appbar{
+  flex-shrink:0;height:58px;padding:8px 16px 10px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(0,0,0,.06);position:sticky;top:0;z-index:2
+}
+.appbar.darkbar{background:#121212;color:#fff;border-color:#222}
+.appbar .back{
+  display:flex;align-items:center;gap:2px;
+  background:rgba(0,0,0,.06);border-radius:18px;padding:6px 12px;
+  font-size:13px;color:#c96f90;font-weight:500
+}
+.appbar.darkbar .back{background:rgba(255,255,255,.12);color:#fff}
+.appbar .title{font-size:16px;font-weight:600}
+.appbar .more{color:#999;font-size:18px;padding:4px 8px}
+.appcontent{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.appcontent h2{font-size:28px;margin:6px 0 14px;font-weight:700}
+.appcontent h3{font-size:18px;margin:18px 0 10px;font-weight:600}
+.muted{color:#927f8b;font-size:12px}
+.appview .homebar{background:#222!important}
+
+/* =========================================================
+   MESSAGES / CHAT
+   ========================================================= */
+.chatlist-item{
+  display:flex;gap:12px;align-items:center;padding:12px 18px;
+  border-bottom:1px solid rgba(0,0,0,.05);cursor:pointer
+}
+.chatlist-item:active{background:rgba(0,0,0,.03)}
+.avatar{width:46px;height:46px;border-radius:50%;background:#f5d9e5;display:grid;place-items:center;font-size:22px;flex-shrink:0}
+.chatlist-item .meta{flex:1;min-width:0}
+.chatlist-item b{display:block;font-size:15px;font-weight:600}
+.chatlist-item .last{color:#8a7c85;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chatlist-item time{font-size:11px;color:#aaa;flex-shrink:0}
+#chatlog{padding:12px 16px;min-height:60vh}
+.msg{max-width:78%;padding:10px 14px;background:#f3e6ed;border-radius:20px;margin:6px 0;font-size:14px;line-height:1.45;word-wrap:break-word}
+.msg.me{background:#e9a8c2;margin-left:auto;border-bottom-right-radius:5px}
+.msg.them{border-bottom-left-radius:5px}
+.msg-time{display:flex;gap:6px;align-items:flex-end;margin:10px 0 4px}
+.msg-time.me{justify-content:flex-end}
+.msg-time .tm{font-size:10px;color:#bbb;margin-bottom:2px}
+.msg-date{text-align:center;color:#aaa;font-size:11px;margin:16px 0 8px}
+.compose{display:flex;gap:8px;padding:10px 14px;background:#fff;border-top:1px solid #eee}
+.compose input{flex:1;min-width:0;border:1px solid #eadde4;border-radius:20px;padding:10px 14px;font-size:14px;background:#faf5f8}
+.compose button{border-radius:20px;background:#e9a8c2;padding:10px 16px;color:#fff;font-weight:600;font-size:13px}
+.compose button:active{opacity:.85}
+
+/* =========================================================
+   KAKAOTALK
+   ========================================================= */
+.kakao-app .appbar{background:#fee500;border-color:rgba(0,0,0,.06)}
+.kakao-app .appbar .back{background:rgba(0,0,0,.07);color:#191919}
+.kt-head{display:flex;justify-content:space-between;align-items:center;padding:12px 18px 16px;background:#fee500}
+.kt-head h2{margin:0;font-size:26px;font-weight:800;color:#191919}
+.kt-head .actions{display:flex;gap:16px;color:#191919;font-size:18px}
+.kt-tabs{display:flex;gap:22px;border-bottom:1px solid #eee;padding:10px 18px;background:#fff;font-size:14px;color:#888}
+.kt-tabs b{color:#191919;border-bottom:2px solid #191919;padding-bottom:10px}
+.kt-row{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid #f2edf0;cursor:pointer}
+.kt-row:active{background:#fafafa}
+.kt-avatar{width:48px;height:48px;border-radius:14px;background:#f5d9e5;display:grid;place-items:center;font-size:22px;flex-shrink:0}
+.kt-row .info{flex:1;min-width:0}
+.kt-row b{display:block;font-size:15px;color:#191919}
+.kt-row .last{color:#9a9397;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kt-row time{font-size:11px;color:#bbb;flex-shrink:0}
+.kt-bottom{
+  position:absolute;bottom:0;left:0;right:0;background:#fff;
+  display:flex;justify-content:space-around;padding:10px 0 22px;border-top:1px solid #eee
+}
+.kt-bottom span{text-align:center;font-size:11px;color:#777}
+.kt-bottom b{display:block;font-size:22px;color:#333;margin-bottom:2px;font-weight:400}
+.kt-chat-head{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fee500;border-bottom:1px solid #e2d000}
+.kt-chat-head .back{font-size:22px;color:#191919;padding:0 6px}
+.kt-chat-head .kt-avatar{width:38px;height:38px;border-radius:12px}
+.kt-chat-head b{font-size:15px;color:#191919}
+.kt-chat-head .right{margin-left:auto;display:flex;gap:16px;color:#191919;font-size:18px}
+.kt-chat-bg{background:#abc5d8;padding:12px;min-height:55vh}
+.kt-bubble{background:#fff;border-radius:3px 14px 14px 14px;padding:9px 12px;margin:8px 0;max-width:80%;font-size:14px;color:#191919;line-height:1.4}
+.kt-bubble.me{background:#fee500;border-radius:14px 3px 14px 14px;margin-left:auto}
+.kt-chat-date{text-align:center;color:rgba(0,0,0,.45);font-size:11px;margin:14px 0}
+.kt-compose{display:flex;gap:8px;padding:10px;background:#fee500;border-top:1px solid #e2d000}
+.kt-compose input{flex:1;min-width:0;border-radius:18px;padding:9px 14px;background:#fff;border:1px solid #e2d000;font-size:14px}
+.kt-compose button{border-radius:14px;background:#191919;color:#fee500;padding:8px 14px;font-weight:700;font-size:13px}
+.kt-emoji-bar{display:flex;gap:10px;padding:8px 14px;background:#f5dd00;border-top:1px solid #e2d000;font-size:22px}
+
+/* =========================================================
+   SPOTIFY
+   ========================================================= */
+.spotify-app #appview{background:#121212}
+.spotify-app .appbar{background:#121212;color:#fff;border-color:#121212}
+.spotify-app .appbar .back{background:rgba(255,255,255,.12);color:#fff}
+.spotify-app .appcontent{background:linear-gradient(180deg,#1f1f25 0%,#121212 250px);color:#fff;padding:0}
+.sp-top{display:flex;justify-content:space-between;align-items:center;padding:10px 18px}
+.sp-top b{font-size:26px;font-weight:800}
+.sp-top .actions{display:flex;gap:16px;font-size:18px;color:#ddd}
+.sp-chips{display:flex;gap:8px;padding:0 18px;margin:14px 0 4px;flex-wrap:wrap}
+.sp-chip{border-radius:18px;background:#333;padding:7px 14px;font-size:12px;color:#fff;font-weight:600}
+.sp-chip.active{background:#fff;color:#000}
+.sp-section{padding:10px 18px 14px}
+.sp-section h2{font-size:22px;margin:8px 0;font-weight:700}
+.sp-card{
+  display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);
+  border-radius:6px;overflow:hidden;margin:7px 0;padding:0;font-weight:600;
+  transition:background .15s;cursor:pointer
+}
+.sp-card:active{background:rgba(255,255,255,.15)}
+.sp-cover{width:64px;height:64px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#e7b8cb,#59445b);font-size:26px;flex-shrink:0}
+.sp-cover.alt2{background:linear-gradient(135deg,#9d6c87,#251a29);font-size:24px}
+.sp-cover.alt3{background:linear-gradient(135deg,#b8a2d6,#40344d);font-size:24px}
+.sp-card .info{flex:1;min-width:0;padding-right:14px}
+.sp-card .info b{font-size:14px;display:block;font-weight:600;color:#fff}
+.sp-card .info small{color:#aaa;font-size:12px}
+.sp-track-row{display:flex;align-items:center;gap:14px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.sp-track-row .num{width:18px;color:#aaa;text-align:right;font-size:12px}
+.sp-track-row .info{flex:1;min-width:0}
+.sp-track-row b{display:block;font-size:14px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sp-track-row small{color:#aaa;font-size:12px}
+.sp-track-row .dur{color:#aaa;font-size:12px}
+
+/* Player */
+.sp-player{display:flex;flex-direction:column;min-height:100%;background:linear-gradient(180deg,#3a2530,#121212 60%);color:#fff;padding:16px 22px 100px}
+.sp-player-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.sp-player-head .back{font-size:22px;color:#fff;padding:4px 8px;border-radius:50%;background:rgba(255,255,255,.08)}
+.sp-player-head .title{font-size:12px;color:#aaa;text-transform:uppercase;letter-spacing:1px;text-align:center}
+.sp-album-placeholder{width:100%;aspect-ratio:1;border-radius:8px;
+  background:linear-gradient(135deg,#e5b4cb,#30202f);display:grid;place-items:center;font-size:110px;margin:10px 0;
+  box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.sp-track-title{margin-top:12px}
+.sp-track-title h2{font-size:22px;margin:4px 0 2px;font-weight:700}
+.sp-track-title .artist{color:#aaa;font-size:14px}
+.sp-track-title .like{float:right;font-size:22px;color:#aaa}
+.sp-progress{height:4px;background:#555;border-radius:3px;margin:18px 0;position:relative;cursor:pointer}
+.sp-progress .played{height:100%;background:#fff;border-radius:3px;position:relative}
+.sp-progress .played::after{content:"";position:absolute;right:-6px;top:50%;transform:translateY(-50%);
+  width:12px;height:12px;background:#fff;border-radius:50%}
+.sp-times{display:flex;justify-content:space-between;color:#aaa;font-size:11px}
+.sp-controls{display:flex;align-items:center;justify-content:space-between;font-size:22px;padding:18px 0;color:#fff}
+.sp-controls .shuffle,.sp-controls .repeat{color:#aaa;font-size:20px}
+.sp-play-btn{width:60px;height:60px;border-radius:50%;background:#1ed760;color:#000;display:grid;place-items:center;font-size:26px;border:0;margin:0 8px}
+.sp-play-btn:active{transform:scale(.93)}
+.sp-footer{display:flex;justify-content:space-around;color:#aaa;font-size:12px;margin-top:20px}
+
+/* Bottom now-playing bar inside spotify */
+.sp-nowbar{
+  position:absolute;bottom:70px;left:12px;right:12px;
+  background:rgba(40,40,45,.95);border-radius:8px;padding:8px 12px;
+  display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.1);z-index:3
+}
+.sp-nowbar .smallcover{width:40px;height:40px;border-radius:4px;font-size:16px;
+  background:linear-gradient(135deg,#e5b4cb,#30202f);display:grid;place-items:center}
+.sp-nowbar b{font-size:13px;flex:1;min-width:0;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sp-nowbar .btn{font-size:22px;color:#fff;padding:0 6px}
+
+/* Spotify miniplayer (global persistent) */
+.sp-mini{
+  position:absolute;left:10px;right:10px;bottom:60px;z-index:20;
+  background:rgba(36,36,40,.95);border-radius:10px;padding:6px 10px;
+  display:none;align-items:center;gap:10px;backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.1);box-shadow:0 6px 16px rgba(0,0,0,.4)
+}
+.sp-mini.show{display:flex}
+.sp-mini .smallcover{width:34px;height:34px;border-radius:4px;font-size:14px;
+  background:linear-gradient(135deg,#e5b4cb,#30202f);display:grid;place-items:center;flex-shrink:0}
+.sp-mini b{font-size:12px;color:#fff;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sp-mini .btn{font-size:20px;color:#fff;padding:4px}
+
+/* =========================================================
+   OTHER APPS
+   ========================================================= */
+.card{background:#f7edf2;border-radius:18px;padding:16px;margin:12px 16px}
+.card a{color:inherit;text-decoration:none}
+.notes{width:100%;min-height:60vh;border:0;outline:0;resize:none;background:#fff8e8;
+  border-radius:16px;padding:16px;font:16px/1.7 -apple-system,sans-serif}
+.photoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:8px 16px 20px}
+.photoGrid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px}
+.clock-face{font-size:52px;font-weight:200;letter-spacing:-2px;text-align:center;margin:10px 0;font-variant-numeric:tabular-nums}
+.pill{border:0;border-radius:20px;background:#e9a8c2;padding:10px 22px;color:#fff;font-weight:600}
+
+/* =========================================================
+   HOME INDICATOR / TOAST / FLASH
+   ========================================================= */
+.homebar{
+  position:absolute;bottom:6px;left:50%;transform:translateX(-50%);
+  width:134px;height:5px;border-radius:5px;
+  background:rgba(255,255,255,.9);z-index:50
+}
+#appview.show ~ .homebar,.homebar-dark{background:#222!important}
+#appview.show ~ .homebar{display:block}
+.homebar.hidden{display:none}
+.toast{
+  position:absolute;top:58px;left:50%;transform:translateX(-50%);
+  background:rgba(20,20,20,.92);color:#fff;padding:8px 16px;border-radius:20px;
+  font-size:12px;z-index:30;display:none;pointer-events:none;
+  animation:toastIn .25s cubic-bezier(.22,1,.36,1) both
+}
+.toast.show{display:block}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.flash-overlay{position:absolute;inset:0;background:#000;z-index:200;display:none;animation:flashOn .2s}
+@keyframes flashOn{from{opacity:0}to{opacity:1}}
+.flash-overlay.off{animation:flashOff .3s forwards}
+@keyframes flashOff{from{opacity:1}to{opacity:0}}
+
+/* Safari quick */
+.saf-list{margin:14px 16px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.saf-list a{display:block;background:#fff;border:1px solid #eee;border-radius:14px;
+  padding:14px;text-decoration:none;color:#c96f90;font-weight:600;font-size:14px}
+.saf-list a .icon{font-size:26px;margin-bottom:6px;display:block}
+
+/* Settings list */
+.set-group{margin:14px 16px;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #eee}
+.set-item{padding:12px 14px;border-bottom:1px solid #f0e8ed;display:flex;align-items:center;gap:12px;font-size:14px}
+.set-item:last-child{border-bottom:0}
+.set-item .ico{width:28px;height:28px;border-radius:6px;background:#fde6ef;display:grid;place-items:center;font-size:14px}
+.set-item .val{margin-left:auto;color:#bbb;font-size:12px}
+.set-item .chev{color:#ccc;margin-left:4px}
+
+/* Safari browser view */
+.browser{background:#fff;display:flex;flex-direction:column;height:100%}
+.browser-bar{display:flex;gap:8px;padding:8px 12px;background:#f6f6f8;border-bottom:1px solid #e5e5ea;align-items:center}
+.browser-bar .url{flex:1;background:#fff;border:1px solid #e5e5ea;border-radius:8px;padding:6px 10px;font-size:13px;color:#333}
+.browser-bar button{background:none;font-size:18px;color:#007aff;padding:2px 8px}
+.browser-frame{flex:1;overflow:hidden;background:#fff}
+.browser-frame iframe{width:100%;height:100%;border:0}
+.browser-home{padding:18px;text-align:center}
+.browser-home .big{font-size:48px}
+
+/* =========================================================
+   ANIMATIONS / TRANSITIONS
+   ========================================================= */
+.app-open-tile{animation:tilePop .45s cubic-bezier(.22,1,.36,1)}
+@keyframes tilePop{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+
+/* Safe area padding for real devices */
+@supports(padding:max(0px)){
+  .status{padding-top:max(14px,env(safe-area-inset-top))}
+  .homebar{bottom:max(6px,env(safe-area-inset-bottom))}
+}
+</style>
+</head>
+<body>
+<main class="device" id="device">
+  <div class="screen" id="screen">
+
+    <!-- ========== LOCK SCREEN ========== -->
+    <section id="lock">
+      <section class="status dark" id="lockstatus"><span id="lockclock">15:15</span><span class="right"><span class="carrier">KTSK</span><span class="signal"></span><span>◉</span><span class="battery"></span></span></section>
+      <section class="lockdate" id="lockdate">10月22日 星期四</section>
+      <section class="locktime" id="bigtime">15:15</section>
+      <section class="lockmsg">사쿠의 작은 세계에 오신 걸 환영해요 ♡</section>
+      <section class="lock-widgets">
+        <div class="lw">날씨 · 서울<b>☀️ 23°</b>맑음</div>
+        <div class="lw">배터리<b>87%</b>충분해요</div>
+      </section>
+      <button class="flash" id="flashBtn" aria-label="手电筒">🔦</button>
+      <button class="camera" id="cameraBtn" aria-label="카메라">📷</button>
+      <div class="swipe-hint" id="swipeHint" role="button"><span class="chev">⌃</span>向上轻扫以解锁</div>
+      <div class="homebar" id="lockHomebar"></div>
+      <div class="flash-overlay" id="flashOverlay"></div>
+    </section>
+    <section id="passcode">
+      <section class="status dark"><span id="pclock">15:15</span><span class="right"><span class="carrier">KTSK</span><span class="signal"></span><span>◉</span><span class="battery"></span></span></section>
+      <div class="passcode-head"><h3>输入密码</h3></div>
+      <div class="dots" id="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+      <div class="pad" id="pad">
+        <button type="button" data-key="1">1</button><button type="button" data-key="2">2</button><button type="button" data-key="3">3</button>
+        <button type="button" data-key="4">4</button><button type="button" data-key="5">5</button><button type="button" data-key="6">6</button>
+        <button type="button" data-key="7">7</button><button type="button" data-key="8">8</button><button type="button" data-key="9">9</button>
+        <span class="pad-empty"></span>
+        <button type="button" data-key="0">0</button>
+        <button type="button" class="delete-key" data-key="⌫">删除</button>
+      </div>
+      <p class="muted">사쿠의폰 · 提示 1118</p>
+      <div class="passcode-footer"><span>紧急情况</span><span>📱</span></div>
+    </section>
+
+    <!-- ========== HOME SCREEN ========== -->
+    <section id="home">
+      <section class="status"><span id="homeclock">15:15</span><span class="right"><span class="carrier">KTSK</span><span class="signal"></span><span>◉</span><span class="battery"></span></span></section>
+      <div class="home-title">
+        <div><small id="homeDate">10月22日 星期四</small><h2>사쿠의폰 ♡</h2></div>
+        <span class="emo">🌸</span>
+      </div>
+      <div class="widget">
+        <div><small>오늘의 기분 · 今日心情</small><strong>좋은 하루!</strong><div class="muted">今天也要一起加油 ♡</div></div>
+        <span class="saku">🐰</span>
+      </div>
+      <div class="grid" id="appgrid">
+        <button class="app" data-app="messages"><span class="appicon">💬</span>信息</button>
+        <button class="app" data-app="kakao"><span class="appicon kakao"></span>KakaoTalk</button>
+        <button class="app" data-app="spotify"><span class="appicon spotify"></span>Spotify</button>
+        <button class="app" data-app="weverse"><span class="appicon">💜</span>Weverse</button>
+        <button class="app" data-app="instagram"><span class="appicon">📸</span>Instagram</button>
+        <button class="app" data-app="x"><span class="appicon">𝕏</span>X</button>
+        <button class="app" data-app="youtube"><span class="appicon">▶️</span>YouTube</button>
+        <button class="app" data-app="photos"><span class="appicon">🌈</span>照片</button>
+        <button class="app" data-app="notes"><span class="appicon">📝</span>备忘录</button>
+        <button class="app" data-app="calendar"><span class="appicon">📅</span>日历</button>
+        <button class="app" data-app="clock"><span class="appicon">⏰</span>时钟</button>
+        <button class="app" data-app="settings"><span class="appicon">⚙️</span>设置</button>
+      </div>
+      <div class="dock" id="dock">
+        <button class="app" data-app="phone"><span class="appicon">📞</span></button>
+        <button class="app" data-app="safari"><span class="appicon">🧭</span></button>
+        <button class="app" data-app="messages"><span class="appicon">💬</span></button>
+        <button class="app" data-app="spotify"><span class="appicon spotify"></span></button>
+      </div>
+      <div class="homebar" id="homeHomebar"></div>
+    </section>
+
+    <!-- ========== APP VIEW (overlay) ========== -->
+    <section id="appview">
+      <div class="appbar" id="appbar">
+        <button class="back" id="backBtn">‹ 返回</button>
+        <div class="title" id="apptitle">应用</div>
+        <span class="more">⋯</span>
+      </div>
+      <div class="appcontent" id="appcontent"></div>
+      <div class="homebar homebar-dark"></div>
+    </section>
+
+    <!-- Persistent mini spotify bar -->
+    <div class="sp-mini" id="spMini">
+      <div class="smallcover">🐰</div>
+      <b id="spMiniTitle">Saku's playlist</b>
+      <button class="btn" id="spPlay">▶</button>
+      <button class="btn" id="spMiniOpen">⁝</button>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+  </div>
+</main>
+
 <script>
-const $=id=>document.getElementById(id);let pin='',startY=0,appName='';
-function updateTime(){const d=new Date();const t=d.toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',hour12:false});$('lockclock').textContent=$('pclock').textContent=$('homeclock').textContent=t;$('bigtime').textContent=t;$('lockdate').textContent=d.toLocaleDateString('zh-CN',{month:'long',day:'numeric',weekday:'long'})}
-updateTime();setInterval(updateTime,10000);
-const lock=$('lock');function beginUnlock(){$('passcode').style.display='block';pin='';dots()}
-lock.addEventListener('touchstart',e=>startY=e.touches[0].clientY);lock.addEventListener('touchend',e=>{if(startY-e.changedTouches[0].clientY>35)beginUnlock()});lock.addEventListener('mousedown',e=>startY=e.clientY);lock.addEventListener('mouseup',e=>{if(startY-e.clientY>35)beginUnlock()});$('swipe').onclick=beginUnlock;
-function verifyPin(){if(pin==='1118'){$('passcode').style.display='none';lock.style.display='none';$('home').style.display='block';$('homebar').style.background='#fff'}else{pin='';dots();toast('密码不正确，请重试')}}function pressKey(k){if(k==='⌫'){pin=pin.slice(0,-1);dots();return}if(!/^[0-9]$/.test(String(k))||pin.length>=4)return;pin+=String(k);dots();if(pin.length===4)setTimeout(verifyPin,120)}
-document.querySelectorAll('#pad button[data-key]').forEach(b=>{b.onclick=()=>pressKey(b.dataset.key);b.addEventListener('touchend',e=>{e.preventDefault();pressKey(b.dataset.key)},{passive:false})});
-function dots(){$('dots').innerHTML=[0,1,2,3].map(i=>'<i class="dot '+(i<pin.length?'filled':'')+'"></i>').join('')}
-function toast(s){$('toast').textContent=s;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',1600)}
-const titles={messages:'信息',line:'LINE',weverse:'Weverse',instagram:'Instagram',x:'X',youtube:'YouTube',spotify:'Spotify',photos:'照片',notes:'备忘录',calendar:'日历',clock:'时钟',settings:'设置',phone:'电话',safari:'Safari',music:'音乐'};
-document.querySelectorAll('[data-app]').forEach(b=>b.addEventListener('click',()=>openApp(b.dataset.app)));
-function openApp(name){appName=name;$('apptitle').textContent=titles[name]||name;$('appcontent').innerHTML=render(name);$('appview').style.display='block';$('homebar').style.display='none';if(name==='notes'){$('noteText').value=localStorage.sakuNotes||'';$('noteText').oninput=e=>localStorage.sakuNotes=e.target.value}if(name==='clock')tickClock()}
-$('back').onclick=closeApp;function closeApp(){$('appview').style.display='none';$('homebar').style.display='block'}
-function render(n){
-if(n==='messages'||n==='line')return '<h2>信息</h2><div class="chatrow"><div class="avatar">🐰</div><div><b>사쿠</b><div class="muted">今天也要一起度过美好的一天 ♡</div></div></div><div id="chatlog"><div class="msg">사쿠：今天有好好吃饭吗？</div><div class="msg me">有！一直在为你加油 ♡</div><div class="msg">사쿠：那就好，明天也要见面哦。</div></div><div class="compose"><input id="chatinput" placeholder="iMessage"><button onclick="sendChat()">发送</button></div>';
-if(n==='kakao')return '<div class="kt-head"><h2>카카오톡</h2><span>⌕　＋　⚙</span></div><div class="kt-tabs"><b>全部</b><span>未读</span><span>频道</span></div><div class="kt-row"><div class="kt-avatar">🐰</div><div style="flex:1"><b>사쿠</b><div class="muted">오늘도 고마워요 ♡</div></div><small>下午 3:18</small></div><div class="kt-row"><div class="kt-avatar">🌸</div><div style="flex:1"><b>사쿠 팬방</b><div class="muted">今天也要为咲哉应援！</div></div><small>昨天</small></div><div class="kt-row"><div class="kt-avatar">🐻</div><div style="flex:1"><b>친구들</b><div class="muted">照片</div></div><small>周一</small></div><div class="kt-bottom"><span><b>♙</b>朋友</span><span><b>▤</b>聊天</span><span><b>◉</b>动态</span><span><b>•••</b>更多</span></div>';
-if(n==='kakaoChat')return '<div class="kt-chathead"><span onclick="openApp(\'kakao\')">‹</span><div class="kt-avatar">🐰</div><b>사쿠</b><span style="margin-left:auto">⌕　☰</span></div><div class="kt-chatbg" id="chatlog"><div class="muted">今天</div><div class="kt-bubble">오늘도 와줘서 고마워요 ♡</div><div class="kt-bubble me">今天也一直在支持你！</div><div class="kt-bubble">밥 잘 챙겨 먹어요! 🐰</div></div><div class="compose"><input id="chatinput" placeholder="输入消息"><button onclick="sendChat()">发送</button></div>';
-if(n==='spotify'||n==='music')return '<div class="spotify"><div class="sp-top"><b style="font-size:25px">Spotify</b><span>⚙　◉</span></div><div style="display:flex;gap:8px;margin:18px 0"><span class="sp-chip">全部</span><span class="sp-chip">音乐</span><span class="sp-chip">播客</span></div><h2>为你推荐</h2><div class="sp-card"><div class="sp-cover">🐰</div><div>사쿠's playlist<br><small style="color:#aaa">Sakuya · 喜爱的歌曲</small></div></div><div class="sp-card"><div class="sp-cover" style="background:linear-gradient(135deg,#9d6c87,#251a29)">🎧</div><div>Daily Mix 1<br><small style="color:#aaa">为你精选</small></div></div><div class="sp-card"><div class="sp-cover" style="background:linear-gradient(135deg,#b8a2d6,#40344d)">🌙</div><div>Chill Hits<br><small style="color:#aaa">放松时刻</small></div></div><h2 style="margin-top:28px">最近播放</h2><div class="sp-card" onclick="openApp(\'spotifyPlayer\')"><div class="sp-cover">💿</div><div>你的音乐时光<br><small style="color:#aaa">点击打开播放器</small></div></div><div class="kt-bottom" style="background:#121212;color:#aaa"><span><b>⌂</b>主页</span><span><b>⌕</b>搜索</span><span><b>▤</b>你的音乐库</span></div></div>';
-if(n==='spotifyPlayer')return '<div class="spotify"><div class="sp-top"><span onclick="openApp(\'spotify\')">⌄</span><b>正在播放</b><span>•••</span></div><div class="sp-album">🐰</div><div style="display:flex;justify-content:space-between;align-items:center"><div><h2 style="margin:0">Saku's playlist</h2><span style="color:#aaa">Sakuya · Fan playlist</span></div><span>＋</span></div><div class="sp-progress"><i></i></div><div style="display:flex;justify-content:space-between;color:#aaa;font-size:11px"><span>1:24</span><span>3:42</span></div><div class="sp-controls"><span>🔀</span><span>⏮</span><button class="sp-play" onclick="this.textContent=this.textContent==='Ⅱ'?'▶':'Ⅱ'">▶</button><span>⏭</span><span>🔁</span></div><div style="color:#aaa">歌词　　队列　　连接设备</div></div>';
-if(n==='notes')return '<h2>备忘录</h2><textarea class="notes" id="noteText" placeholder="记录想对咲哉说的话…"></textarea><p class="muted">自动保存在此设备</p>';
-if(n==='photos')return '<h2>照片</h2><div class="card">选择你想放进相册的照片 ♡<p><input type="file" accept="image/*" multiple onchange="addPhotos(event)"></p><div class="photoGrid" id="photoGrid"></div></div>';
-if(n==='calendar')return '<h2>日历</h2><div class="card"><h1>22</h1>星期四 · 10月<br><p>♡ 想念咲哉的每一天</p></div>';
-if(n==='clock')return '<h2>时钟</h2><div class="card"><h1 id="tokyo">--:--:--</h1>东京 · 日本标准时间</div><div class="card">闹钟　　＋</div>';
-if(n==='phone')return '<h2>个人收藏</h2><div class="card" style="text-align:center"><div style="font-size:55px">🐰</div><b>사쿠</b><p class="muted">模拟电话界面</p><button class="pill" onclick="toast(\'这是粉丝模拟电话哦 ♡\')">拨打</button></div>';
-if(n==='settings')return '<h2>设置</h2>'+['飞行模式','Wi‑Fi','蓝牙','通知','墙纸','密码：1118','关于本机 · 사쿠의폰'].map(x=>'<div class="card">'+x+'　›</div>').join('');
-if(n==='safari')return '<h2>收藏</h2>'+[['Weverse','https://weverse.io/'],['YouTube','https://youtube.com/'],['Instagram','https://instagram.com/'],['Spotify','https://open.spotify.com/']].map(x=>'<a class="card" style="display:block;color:#8a5470;text-decoration:none" href="'+x[1]+'" target="_blank">'+x[0]+'　↗</a>').join('');
-const links={weverse:'https://weverse.io/',instagram:'https://instagram.com/',x:'https://x.com/',youtube:'https://youtube.com/'};return '<h2>'+titles[n]+'</h2><div class="card">사쿠의 업데이트를 기다리는 중… ♡<p class="muted">粉丝制作的模拟界面，不连接真实账号。</p><a href="'+(links[n]||'#')+'" target="_blank">打开官方应用网站 ↗</a></div>'}
+/* ================================================================
+   SAKUYA'S PHONE — Full interactive simulated iPhone
+   ================================================================ */
+const $ = id => document.getElementById(id);
+const device = $('device'), screen = $('screen');
+
+/* ---------- Time ---------- */
+function updateTime(){
+  const d = new Date();
+  const t = d.toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit',hour12:false});
+  const dateStr = d.toLocaleDateString('zh-CN',{month:'long',day:'numeric',weekday:'long'});
+  ['lockclock','pclock','homeclock','bigtime'].forEach(id=>{ const el=$(id); if(el) el.textContent=t; });
+  if($('lockdate')) $('lockdate').textContent=dateStr;
+  if($('homeDate')) $('homeDate').textContent=dateStr;
+}
+updateTime(); setInterval(updateTime,5000);
+
+/* ---------- Lock → Passcode ---------- */
+let startY=null, unlockProgress=0;
+const lock=$('lock'), pass=$('passcode'), swipe=$('swipeHint');
+
+function openPasscode(){
+  if(pass.classList.contains('show')) return;
+  lock.classList.add('hidden');
+  pass.classList.add('show');
+  setTimeout(()=>pass.querySelector('button[data-key]')?.focus?.(),300);
+}
+function showLock(){
+  lock.classList.remove('hidden');
+  pass.classList.remove('show');
+  resetDots(); pin='';
+}
+// swipe up gesture on lock
+lock.addEventListener('touchstart',e=>{startY=e.touches[0].clientY},{passive:true});
+lock.addEventListener('touchmove',e=>{
+  if(startY===null)return;
+  const dy=startY-e.touches[0].clientY;
+  if(dy>0) lock.style.transform=`translateY(${dy*0.3}px)`;
+},{passive:true});
+lock.addEventListener('touchend',e=>{
+  if(startY===null)return;
+  const dy=startY-e.changedTouches[0].clientY;
+  lock.style.transform='';
+  if(dy>30) openPasscode();
+  startY=null;
+},{passive:true});
+lock.addEventListener('pointerdown',e=>{startY=e.clientY},{passive:true});
+lock.addEventListener('pointerup',e=>{
+  if(startY===null)return;
+  const dy=startY-e.clientY;
+  if(dy>28) openPasscode();
+  startY=null;
+});
+swipe.addEventListener('click',openPasscode);
+swipe.addEventListener('touchend',openPasscode,{passive:true});
+
+/* ---------- Flashlight / Camera (doorbell buttons) ---------- */
+$('flashBtn').addEventListener('click',()=>{
+  const o=$('flashOverlay');
+  o.style.display='block'; o.classList.remove('off');
+  setTimeout(()=>{o.classList.add('off');setTimeout(()=>o.style.display='none',300)},1200);
+  toast('手电筒 💡');
+});
+$('cameraBtn').addEventListener('click',()=>toast('카메라 · 相机 📷 (粉丝模拟)'));
+
+/* ---------- Passcode ---------- */
+const CORRECT_PIN = '1118';
+let pin='';
+const dotsEl=$('dots');
+function resetDots(){
+  dotsEl.innerHTML=[0,1,2,3].map(i=>'<i class="dot"></i>').join('');
+}
+function updateDots(wrong=false){
+  const all=dotsEl.querySelectorAll('.dot');
+  all.forEach((d,i)=>{ d.classList.remove('filled','wrong'); if(i<pin.length)d.classList.add(wrong?'wrong':'filled'); });
+}
+function shakePasscode(){ pass.classList.add('shake'); setTimeout(()=>pass.classList.remove('shake'),480); }
+function pressKey(k){
+  if(k==='⌫'){ pin=pin.slice(0,-1); updateDots(); return; }
+  if(!/^\d$/.test(String(k)) || pin.length>=4) return;
+  pin+=String(k); updateDots();
+  if(pin.length===4) setTimeout(tryUnlock,180);
+}
+function tryUnlock(){
+  if(pin===CORRECT_PIN){
+    // Unlock animation
+    pass.style.transform='translateY(100%)';
+    setTimeout(()=>{
+      $('home').classList.add('show');
+      pass.classList.remove('show'); pass.style.transform='';
+      // hide lock fully after animation
+      lock.style.zIndex='0';
+      // mini spotify show after a moment
+      setTimeout(()=>$('spMini').classList.add('show'),600);
+    },300);
+  } else {
+    shakePasscode(); updateDots(true); toast('密码错误 · 请重试');
+    setTimeout(()=>{pin='';resetDots();},500);
+  }
+}
+document.querySelectorAll('#pad button[data-key]').forEach(b=>{
+  b.addEventListener('click',e=>{e.preventDefault();pressKey(b.dataset.key);});
+  b.addEventListener('touchend',e=>{e.preventDefault();pressKey(b.dataset.key);},{passive:false});
+});
+// keyboard support on passcode
+window.addEventListener('keydown',e=>{
+  if(!pass.classList.contains('show')) return;
+  if(/^\d$/.test(e.key)) pressKey(e.key);
+  else if(e.key==='Backspace') pressKey('⌫');
+});
+
+/* ---------- Toast ---------- */
+let toastTimer=null;
+function toast(s){
+  const t=$('toast'); t.textContent=s; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),1600);
+}
+
+/* ================================================================
+   HOME SCREEN & APP SWITCHING
+   ================================================================ */
+let currentApp=null, appStack=[], appTileAnim=null;
+const appview=$('appview'), appcontent=$('appcontent'), apptitle=$('apptitle'), appbar=$('appbar'), backBtn=$('backBtn');
+const titles = {
+  messages:'信息', kakao:'카카오톡', spotify:'Spotify', weverse:'Weverse',
+  instagram:'Instagram', x:'X', youtube:'YouTube', photos:'照片',
+  notes:'备忘录', calendar:'日历', clock:'时钟', settings:'设置',
+  phone:'电话', safari:'Safari',
+  kakaoChat:'사쿠', spotifyPlayer:'正在播放'
+};
+
+document.querySelectorAll('.app').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    const name=btn.dataset.app; if(!name) return;
+    appTileAnim && clearTimeout(appTileAnim);
+    btn.classList.add('app-open-tile');
+    openApp(name);
+    appTileAnim=setTimeout(()=>btn.classList.remove('app-open-tile'),460);
+  });
+});
+
+function openApp(name, opts={}){
+  appStack.push(name);
+  currentApp=name;
+  apptitle.textContent = titles[name] || name;
+  appcontent.innerHTML = render(name, opts);
+  appview.classList.remove('closing'); appview.classList.add('show');
+  backBtn.textContent = appStack.length>1 ? '‹ 返回' : '‹ 主屏幕';
+  // App-specific setup
+  appview.classList.toggle('kakao-app', name.startsWith('kakao'));
+  appview.classList.toggle('spotify-app', name.startsWith('spotify'));
+  appbar.classList.toggle('darkbar', name==='spotifyPlayer');
+  // After DOM update: wire up
+  setTimeout(()=>wireApp(name,opts),0);
+}
+
+function closeApp(){
+  appview.classList.add('closing');
+  setTimeout(()=>{
+    appview.classList.remove('show','closing','kakao-app','spotify-app');
+    appbar.classList.remove('darkbar');
+    appStack=[]; currentApp=null;
+  },280);
+}
+
+backBtn.addEventListener('click',()=>{
+  // pop this app from stack
+  appStack.pop();
+  if(appStack.length>0){
+    // reopen previous
+    const prev=appStack[appStack.length-1]; appStack.pop();
+    openApp(prev);
+  } else {
+    closeApp();
+  }
+});
+
+/* Home indicator swipe down (app close) */
+let homeStartY=null;
+screen.addEventListener('pointerdown',e=>{
+  if(!appview.classList.contains('show')) return;
+  homeStartY=e.clientY;
+});
+screen.addEventListener('pointerup',e=>{
+  if(homeStartY===null) return;
+  const dy=e.clientY-homeStartY;
+  homeStartY=null;
+  if(dy>80 && e.clientY>screen.clientHeight*0.75) closeApp();
+});
+
+/* ================================================================
+   APP RENDERING
+   ================================================================ */
+function render(n,opts={}){
+  switch(n){
+    case 'messages': return renderMessages();
+    case 'kakao': return renderKakaoList();
+    case 'kakaoChat': return renderKakaoChat(opts.with||'sakuya');
+    case 'spotify': return renderSpotifyHome();
+    case 'spotifyPlayer': return renderSpotifyPlayer();
+    case 'notes': return renderNotes();
+    case 'photos': return renderPhotos();
+    case 'calendar': return renderCalendar();
+    case 'clock': return renderClock();
+    case 'phone': return renderPhone();
+    case 'settings': return renderSettings();
+    case 'safari': return renderSafari();
+    case 'weverse':
+    case 'instagram':
+    case 'x':
+    case 'youtube':
+      return renderExternal(n);
+    default: return '<h2>'+n+'</h2><div class="card">알 수 없는 화면 🌸</div>';
+  }
+}
+
+/* ---------- Messages / iMessage ---------- */
+const messagesStore = {
+  sakuya:[
+    {me:false,time:'15:02',text:'오늘도 와줘서 고마워요 ♡'},
+    {me:true, time:'15:03',text:'今天也一直在支持你！🐰'},
+    {me:false,time:'15:04',text:'밥 잘 챙겨 먹어요!'},
+    {me:true, time:'15:05',text:'好！咲哉也要好好休息啊~'},
+    {me:false,time:'15:06',text:'내일 또 볼 수 있죠? ✨'},
+  ],
+  fanclub:[
+    {me:false,time:'14:58',text:'사쿠님 무대 진짜 최고였어요!'},
+    {me:false,time:'14:59',text:'팬사인회 언제 해요 ㅠㅠ'},
+  ]
+};
+function renderMessages(){
+  return `
+  <div class="chatlist-item" data-chat="sakuya"><div class="avatar">🐰</div><div class="meta"><b>사쿠</b><div class="last">오늘도 와줘서 고마워요 ♡</div></div><time>15:06</time></div>
+  <div class="chatlist-item" data-chat="fanclub"><div class="avatar">🌸</div><div class="meta"><b>사쿠 팬방</b><div class="last">사쿠님 무대 진짜 최고였어요!</div></div><time>14:59</time></div>
+  <div class="chatlist-item"><div class="avatar">🍑</div><div class="meta"><b>동생</b><div class="last">照片</div></div><time>昨天</time></div>
+  <div class="chatlist-item"><div class="avatar">🐻</div><div class="meta"><b>친구들</b><div class="last">好可爱的猫!</div></div><time>周一</time></div>
+  `;
+}
+function enterChat(who){
+  const msgs = messagesStore[who]||messagesStore.sakuya;
+  const name = who==='fanclub'?'사쿠 팬방':'사쿠';
+  const avatar = who==='fanclub'?'🌸':'🐰';
+  appStack.push('chat'); // push placeholder so back returns
+  apptitle.textContent = name;
+  appcontent.innerHTML = `
+    <div id="chatlog">
+      <div class="msg-date">今天</div>
+      ${msgs.map(m=>`
+        <div class="msg-time ${m.me?'me':''}">
+          ${m.me?'':'<div class="avatar" style="width:26px;height:26px;font-size:14px;border-radius:50%">${avatar}</div>'}
+          <div class="msg ${m.me?'me them':''}">${m.text}</div>
+          <span class="tm">${m.time}</span>
+        </div>
+      `).join('')}
+    </div>
+    <div class="compose"><input id="chatinput" placeholder="iMessage"><button id="chatsend">发送</button></div>
+  `;
+  appview.classList.add('show');
+  backBtn.textContent='‹ '+titles.messages;
+  // scroll bottom
+  setTimeout(()=>{ const cl=$('chatlog'); if(cl) cl.scrollTop=cl.scrollHeight; },50);
+  const send=()=>{
+    const inp=$('chatinput'); const val=inp.value.trim(); if(!val) return;
+    const now=new Date(); const hh=String(now.getHours()).padStart(2,'0'), mm=String(now.getMinutes()).padStart(2,'0');
+    msgs.push({me:true, time:hh+':'+mm, text:val});
+    inp.value='';
+    // auto reply
+    setTimeout(()=>{
+      const replies=['ㅋㅋㅋ 너무 웃겨요 ♡','오늘 하루도 수고했어요!','그래요! 내일 봐요 🐰','사랑해요 팬아!','힘내서 응원해줘서 고마워요'];
+      const r=replies[Math.floor(Math.random()*replies.length)];
+      msgs.push({me:false,time:hh+':'+mm,text:r});
+      enterChat(who);
+    },900);
+    enterChat(who);
+  };
+  $('chatsend').onclick=send;
+  $('chatinput').addEventListener('keydown',e=>{ if(e.key==='Enter') send(); });
+}
+
+/* ---------- KakaoTalk ---------- */
+const kakaoChats = {
+  sakuya:{ name:'사쿠', avatar:'🐰', msgs:[
+    {me:false,time:'15:02',text:'오늘도 와줘서 고마워요 ♡'},
+    {me:true, time:'15:03',text:'今天也一直在支持你！'},
+    {me:false,time:'15:04',text:'밥 잘 챙겨 먹어요! 🐰'},
+    {me:true, time:'15:05',text:'好！咲哉也要好好休息啊'},
+    {me:false,time:'15:06',text:'내일 또 볼 수 있죠? ✨'},
+  ]},
+  fanclub:{ name:'사쿠 팬방', avatar:'🌸', msgs:[
+    {me:false,time:'14:58',text:'사쿠님 무대 진짜 최고였어요!'},
+    {me:false,time:'14:59',text:'우리 팬들 다 모여있어요 ㅎㅎ'},
+  ]},
+  friends:{ name:'친구들', avatar:'🐻', msgs:[
+    {me:false,time:'周一',text:'사진 도착했어요!'},
+  ]}
+};
+function renderKakaoList(){
+  return `
+  <div class="kt-head">
+    <h2>카카오톡</h2>
+    <div class="actions"><span>⌕</span><span>＋</span><span>⚙</span></div>
+  </div>
+  <div class="kt-tabs"><b>全部</b><span>未读</span><span>频道</span></div>
+  <div class="kt-row" data-kt="sakuya"><div class="kt-avatar">🐰</div><div class="info"><b>사쿠</b><div class="last">오늘도 와줘서 고마워요 ♡</div></div><time>下午 3:06</time></div>
+  <div class="kt-row" data-kt="fanclub"><div class="kt-avatar">🌸</div><div class="info"><b>사쿠 팬방</b><div class="last">사쿠님 무대 진짜 최고였어요!</div></div><time>下午 2:59</time></div>
+  <div class="kt-row" data-kt="friends"><div class="kt-avatar">🐻</div><div class="info"><b>친구들</b><div class="last">照片</div></div><time>周一</time></div>
+  <div class="kt-row"><div class="kt-avatar">🍑</div><div class="info"><b>동생</b><div class="last">还你上次借的书~</div></div><time>周日</time></div>
+  <div class="kt-row"><div class="kt-avatar">🍓</div><div class="info"><b>오빠</b><div class="last">好的 明天见</div></div><time>上周</time></div>
+  <div class="kt-bottom">
+    <span><b>♙</b>朋友</span><span><b>▤</b>聊天</span><span><b>◉</b>动态</span><span><b>⋮</b>更多</span>
+  </div>`;
+}
+function renderKakaoChat(who){
+  const c=kakaoChats[who]||kakaoChats.sakuya;
+  return `
+  <div class="kt-chat-head">
+    <span class="back" id="ktBack">‹</span>
+    <div class="kt-avatar">${c.avatar}</div>
+    <b>${c.name}</b>
+    <div class="right"><span>⌕</span><span>☰</span></div>
+  </div>
+  <div class="kt-chat-bg" id="ktchatlog">
+    <div class="kt-chat-date">今天</div>
+    ${c.msgs.map(m=>`
+      <div class="kt-bubble ${m.me?'me':''}">${m.text}</div>
+    `).join('')}
+  </div>
+  <div class="kt-emoji-bar">🐰 🌸 💜 🎧 ✨ ♡ 🍓</div>
+  <div class="kt-compose">
+    <input id="ktinput" placeholder="输入消息…">
+    <button id="ktsend">发送</button>
+  </div>`;
+}
+function enterKakaoChat(who){
+  appStack.push('kakaoChat'); appStack.push(who);
+  apptitle.textContent = kakaoChats[who].name;
+  appcontent.innerHTML = renderKakaoChat(who);
+  // scroll to bottom
+  setTimeout(()=>{ const e=$('ktchatlog'); if(e) e.scrollTop=e.scrollHeight; },60);
+  const send=()=>{
+    const inp=$('ktinput'); const val=inp.value.trim(); if(!val) return;
+    const now=new Date();
+    kakaoChats[who].msgs.push({me:true,time:'방금',text:val}); inp.value='';
+    setTimeout(()=>{
+      const replies=['ㅋㅋㅋ 너무 웃겨요 ♡','오늘 하루도 수고했어요!','그래요! 내일 봐요 🐰','사랑해요 팬아!','사쿠야 고마워 😍'];
+      const r=replies[Math.floor(Math.random()*replies.length)];
+      kakaoChats[who].msgs.push({me:false,time:'방금',text:r});
+      enterKakaoChat(who);
+    },900);
+    enterKakaoChat(who);
+  };
+  $('ktsend').onclick=send;
+  $('ktinput').addEventListener('keydown',e=>{ if(e.key==='Enter') send(); });
+  $('ktBack').onclick=()=>{
+    // pop two (who, kakaoChat), back to kakao
+    appStack.pop(); appStack.pop();
+    apptitle.textContent=titles.kakao;
+    appcontent.innerHTML=renderKakaoList();
+    appview.classList.add('show');
+    wireApp('kakao');
+  };
+}
+
+/* ---------- Spotify ---------- */
+const spotifyPlaylists = [
+  {id:'p1',title:"사쿠's playlist",sub:'Sakuya · 喜爱的歌曲',emoji:'🐰',gradient:'linear-gradient(135deg,#e5b4cb,#30202f)'},
+  {id:'p2',title:'Daily Mix 1',sub:'为你精选',emoji:'🎧',gradient:'linear-gradient(135deg,#9d6c87,#251a29)'},
+  {id:'p3',title:'Chill Hits',sub:'放松时刻',emoji:'🌙',gradient:'linear-gradient(135deg,#b8a2d6,#40344d)'},
+  {id:'p4',title:'K-Pop Favorites',sub:'🌸',emoji:'🌸',gradient:'linear-gradient(135deg,#f0b8d0,#6b3b50)'},
+];
+const spotifyTracks = [
+  {title:'Spring Love',artist:'Sakuya',dur:'3:42',emoji:'🐰'},
+  {title:'Starlit Night',artist:'Sakuya',dur:'4:18',emoji:'✨'},
+  {title:'바람처럼',artist:'Sakuya',dur:'3:55',emoji:'🍃'},
+  {title:'Moonlit Serenade',artist:'Sakuya',dur:'4:03',emoji:'🌙'},
+  {title:'Heartbeat',artist:'Sakuya',dur:'3:30',emoji:'💜'},
+];
+let spNowPlaying={title:'Spring Love',artist:'Sakuya',dur:'3:42',emoji:'🐰',playedSec:84,durSec:222,playing:true};
+let spTick=null;
+
+function renderSpotifyHome(){
+  return `
+  <div class="sp-top"><b>Spotify</b><div class="actions"><span>⚙</span><span>◉</span></div></div>
+  <div class="sp-chips">
+    <span class="sp-chip active">全部</span><span class="sp-chip">音乐</span><span class="sp-chip">播客</span>
+  </div>
+  <div class="sp-section"><h2>为你推荐</h2>
+    ${spotifyPlaylists.map(p=>`
+      <div class="sp-card" data-playlist="${p.id}">
+        <div class="sp-cover" style="background:${p.gradient};font-size:30px">${p.emoji}</div>
+        <div class="info"><b>${p.title}</b><small>${p.sub}</small></div>
+      </div>`).join('')}
+  </div>
+  <div class="sp-section"><h2>最近播放</h2>
+    ${spotifyTracks.slice(0,3).map((t,i)=>`
+      <div class="sp-card" data-track="${i}">
+        <div class="sp-cover" style="background:linear-gradient(135deg,#e5b4cb,#30202f);font-size:22px">${t.emoji}</div>
+        <div class="info"><b>${t.title}</b><small>${t.artist} · ${t.dur}</small></div>
+      </div>`).join('')}
+  </div>
+  <div class="sp-section"><h2>사쿠's playlist</h2>
+    ${spotifyTracks.map((t,i)=>`
+      <div class="sp-track-row" data-track="${i}">
+        <div class="num">${i+1}</div>
+        <div class="info"><b>${t.title}</b><small>${t.artist}</small></div>
+        <div class="dur">${t.dur}</div>
+      </div>`).join('')}
+  </div>
+  <div class="kt-bottom" style="background:#121212;color:#aaa;border-color:#222;position:relative;padding-bottom:20px">
+    <span><b style="color:#fff;opacity:.95">⌂</b>主页</span><span><b style="color:#fff;opacity:.95">⌕</b>搜索</span>
+    <span><b style="color:#fff;opacity:.95">▤</b>你的音乐库</span>
+  </div>`;
+}
+function renderSpotifyPlayer(){
+  const p=spNowPlaying;
+  const playedSec=p.playedSec, durSec=p.durSec;
+  const pct=durSec?Math.min(100,(playedSec/durSec)*100):0;
+  return `
+  <div class="sp-player">
+    <div class="sp-player-head">
+      <button class="back" id="spClose">‹</button>
+      <div class="title">正在播放</div>
+      <span style="width:30px"></span>
+    </div>
+    <div class="sp-album-placeholder">${p.emoji}</div>
+    <div class="sp-track-title">
+      <span class="like">♡</span>
+      <h2>${p.title}</h2>
+      <div class="artist">${p.artist}</div>
+    </div>
+    <div class="sp-progress" id="spProgress"><div class="played" style="width:${pct}%"></div></div>
+    <div class="sp-times"><span id="spCur">${fmt(playedSec)}</span><span>${fmt(durSec)}</span></div>
+    <div class="sp-controls">
+      <span class="shuffle">🔀</span><span>⏮</span>
+      <button class="sp-play-btn" id="spPlayBtn">${p.playing?'Ⅱ':'▶'}</button>
+      <span>⏭</span><span class="repeat">🔁</span>
+    </div>
+    <div class="sp-footer"><span>歌词</span><span>队列</span><span>连接设备</span></div>
+  </div>`;
+}
+function fmt(s){ const m=Math.floor(s/60), sec=s%60; return m+':'+String(sec).padStart(2,'0'); }
+
+/* ---------- Notes ---------- */
+function renderNotes(){
+  const saved=localStorage.getItem('sakuNotes')||'';
+  return `<h2>备忘录</h2>
+    <div class="card" style="padding:8px">
+      <textarea class="notes" id="noteText" placeholder="记录想对咲哉说的话…">${saved}</textarea>
+    </div>
+    <p class="muted" style="text-align:center;margin-top:-8px">自动保存在此设备 · 粉丝模拟内容</p>`;
+}
+
+/* ---------- Photos ---------- */
+function renderPhotos(){
+  const saved=JSON.parse(localStorage.getItem('sakuPhotos')||'[]');
+  const placeholders=[
+    'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300',
+    'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300',
+    'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=300',
+    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300',
+    'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300',
+    'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=300',
+  ];
+  return `
+  <div class="card">
+    <b>사쿠의 갤러리 · 相册</b>
+    <div class="muted" style="margin-top:4px">点击下面按钮添加你想保存的照片 ♡</div>
+    <p><input type="file" accept="image/*" multiple id="photoInput" style="font-size:12px"></p>
+  </div>
+  <div class="photoGrid" id="photoGrid">
+    ${saved.map(src=>`<img src="${src}" alt="photo">`).join('')}
+    ${saved.length===0 ? placeholders.map(s=>`<img src="${s}" alt="">`).join('') : ''}
+  </div>`;
+}
+
+/* ---------- Calendar ---------- */
+function renderCalendar(){
+  const now=new Date();
+  const days=['日','一','二','三','四','五','六'];
+  return `
+  <h2>日历</h2>
+  <div class="card" style="text-align:center">
+    <div style="font-size:14px;color:#927f8b">${now.getFullYear()}年 ${now.getMonth()+1}月</div>
+    <h1 style="font-size:72px;margin:0 0 4px;font-weight:200">${now.getDate()}</h1>
+    <div class="muted">星期${days[now.getDay()]} · 今日</div>
+  </div>
+  <div class="card"><b>♡ 想念咲哉的每一天</b><p class="muted" style="margin-top:4px">标记为重要日期</p></div>
+  <div class="card"><b>📸 下一次应援</b><p class="muted" style="margin-top:4px">粉丝模拟日程 · 记得去见咲哉!</p></div>`;
+}
+
+/* ---------- Clock ---------- */
+let clockInterval=null;
+function renderClock(){
+  return `
+  <h2>时钟</h2>
+  <div class="card" style="text-align:center">
+    <div style="font-size:13px;color:#927f8b;margin-bottom:8px">东京 · 日本标准时间</div>
+    <div class="clock-face" id="tokyo">--:--:--</div>
+  </div>
+  <div class="card" style="display:flex;justify-content:space-between;align-items:center">
+    <div><b>闹钟</b><div class="muted">7:30 · 工作日</div></div>
+    <span style="color:#c96f90">＋</span>
+  </div>
+  <div class="card" style="display:flex;justify-content:space-between;align-items:center">
+    <div><b>计时器</b><div class="muted">专注应援!</div></div>
+    <span style="color:#c96f90">›</span>
+  </div>`;
+}
+
+/* ---------- Phone ---------- */
+function renderPhone(){
+  return `
+  <div class="card" style="text-align:center;padding:24px 16px">
+    <div style="font-size:70px">🐰</div>
+    <b style="font-size:18px">사쿠</b>
+    <div class="muted" style="margin:6px 0 12px">模拟电话 · 사쿠의폰</div>
+    <button class="pill" id="fakeCall">📞 拨打</button>
+    <div class="muted" style="margin-top:10px;font-size:11px">⚠ 粉丝模拟内容 · 无法连接真实电话</div>
+  </div>`;
+}
+
+/* ---------- Settings ---------- */
+function renderSettings(){
+  const groups=[
+    [{ico:'✈️',label:'飞行模式'},{ico:'📶',label:'Wi‑Fi',val:'사쿠 5G'},{ico:'📡',label:'蓝牙',val:'开'},{ico:'🔔',label:'通知'}],
+    [{ico:'🎨',label:'墙纸'},{ico:'🔐',label:'密码',val:'1118'},{ico:'😴',label:'专注模式'}],
+    [{ico:'ℹ️',label:'关于本机',val:'사쿠의폰'},{ico:'🔋',label:'电池',val:'87%'},{ico:'🌙',label:'深色模式',val:'自动'}]
+  ];
+  return groups.map((g,gi)=>`
+    <div class="set-group">
+      ${g.map(i=>`<div class="set-item"><span class="ico">${i.ico}</span>${i.label}${i.val?`<span class="val">${i.val}</span>`:''}<span class="chev">›</span></div>`).join('')}
+    </div>
+  `).join('')+`<p class="muted" style="text-align:center;margin-top:20px">사쿠의폰 · 粉丝模拟界面 · 密码 1118</p>`;
+}
+
+/* ---------- Safari ---------- */
+function renderSafari(){
+  return `
+  <h2 style="padding:0 16px;margin-top:18px">收藏</h2>
+  <div class="saf-list">
+    <a href="https://weverse.io/" target="_blank"><span class="icon">💜</span>Weverse<br><span class="muted" style="color:#888;font-size:11px">打开网站 ↗</span></a>
+    <a href="https://youtube.com/" target="_blank"><span class="icon">▶️</span>YouTube<br><span class="muted" style="color:#888;font-size:11px">打开网站 ↗</span></a>
+    <a href="https://instagram.com/" target="_blank"><span class="icon">📸</span>Instagram<br><span class="muted" style="color:#888;font-size:11px">打开网站 ↗</span></a>
+    <a href="https://open.spotify.com/" target="_blank"><span class="icon">🎵</span>Spotify<br><span class="muted" style="color:#888;font-size:11px">打开网站 ↗</span></a>
+  </div>
+  <p class="muted" style="text-align:center;margin-top:10px">Safari · 사쿠의폰</p>`;
+}
+
+/* ---------- External (Weverse/Instagram/X/YouTube) ---------- */
+function renderExternal(n){
+  const labels={weverse:'Weverse',instagram:'Instagram',x:'X',youtube:'YouTube'};
+  const emoji={weverse:'💜',instagram:'📸',x:'𝕏',youtube:'▶️'};
+  const links={weverse:'https://weverse.io/',instagram:'https://instagram.com/',x:'https://x.com/',youtube:'https://youtube.com/'};
+  return `
+  <h2>${labels[n]}</h2>
+  <div class="card" style="text-align:center;padding:30px 18px">
+    <div style="font-size:60px">${emoji[n]}</div>
+    <b style="font-size:16px">사쿠의 업데이트를 기다리는 중… ♡</b>
+    <p class="muted" style="margin-top:8px">粉丝制作的模拟界面<br>不连接真实账号</p>
+    <p><a class="pill" href="${links[n]}" target="_blank" style="text-decoration:inline-block">打开 ${labels[n]} ↗</a></p>
+  </div>`;
+}
+
+/* ================================================================
+   WIRE — app-specific listeners after DOM insertion
+   ================================================================ */
+function wireApp(name,opts={}){
+  switch(name){
+    case 'messages':
+      appcontent.querySelectorAll('[data-chat]').forEach(el=>el.addEventListener('click',()=>enterChat(el.dataset.chat)));
+      break;
+    case 'kakao':
+      appcontent.querySelectorAll('[data-kt]').forEach(el=>el.addEventListener('click',()=>enterKakaoChat(el.dataset.kt)));
+      break;
+    case 'spotify':
+      appcontent.querySelectorAll('[data-track]').forEach(el=>el.addEventListener('click',()=>{
+        const i=+el.dataset.t, t=spotifyTracks[i];
+        spNowPlaying={...spNowPlaying,title:t.title,artist:t.artist,emoji:t.emoji,durSec:parseTime(t.dur),playedSec:0,playing:true};
+        $('spMiniTitle').textContent=t.title;
+        openApp('spotifyPlayer');
+      }));
+      appcontent.querySelectorAll('[data-playlist]').forEach(el=>el.addEventListener('click',()=>toast('打开歌单 🎧')));
+      break;
+    case 'spotifyPlayer':
+      const pb=$('spPlayBtn');
+      if(pb){
+        pb.onclick=()=>{ spNowPlaying.playing=!spNowPlaying.playing; pb.textContent=spNowPlaying.playing?'Ⅱ':'▶'; };
+      }
+      $('spClose')?.addEventListener('click',()=>{
+        appStack.pop(); // pop spotifyPlayer
+        openApp('spotify');
+      });
+      $('spProgress')?.addEventListener('click',e=>{
+        const rect=e.currentTarget.getBoundingClientRect();
+        const pct=Math.max(0,Math.min(1,(e.clientX-rect.left)/rect.width));
+        spNowPlaying.playedSec=Math.floor(pct*spNowPlaying.durSec);
+        updatePlayerProgress();
+      });
+      break;
+    case 'notes':
+      const nt=$('noteText');
+      if(nt){
+        nt.value=localStorage.getItem('sakuNotes')||'';
+        nt.oninput=e=>localStorage.setItem('sakuNotes',e.target.value);
+      }
+      break;
+    case 'photos':
+      const pi=$('photoInput');
+      if(pi){
+        pi.onchange=e=>{
+          const files=Array.from(e.target.files); if(!files.length)return;
+          let saved=JSON.parse(localStorage.getItem('sakuPhotos')||'[]');
+          let pending=files.length;
+          files.forEach(f=>{
+            const r=new FileReader();
+            r.onload=ev=>{ saved.unshift(ev.target.result); if(--pending===0){
+              localStorage.setItem('sakuPhotos',JSON.stringify(saved.slice(0,20)));
+              appcontent.innerHTML=renderPhotos(); wireApp('photos');
+            }};
+            r.readAsDataURL(f);
+          });
+        };
+      }
+      break;
+    case 'clock':
+      tickClock();
+      break;
+    case 'phone':
+      $('fakeCall')?.addEventListener('click',()=>toast('📞 사쿠의폰 · 这是粉丝模拟电话哦 ♡'));
+      break;
+  }
+}
+function parseTime(s){ const [m,sec]=s.split(':').map(Number); return m*60+sec; }
+function updatePlayerProgress(){
+  const cur=$('spCur'); const playBar=appcontent.querySelector('.sp-progress .played');
+  if(cur) cur.textContent=fmt(spNowPlaying.playedSec);
+  if(playBar) playBar.style.width=((spNowPlaying.playedSec/spNowPlaying.durSec)*100)+'%';
+}
+function startSpotifyTick(){
+  stopSpotifyTick();
+  spTick=setInterval(()=>{
+    if(!spNowPlaying.playing) return;
+    spNowPlaying.playedSec=Math.min(spNowPlaying.durSec, spNowPlaying.playedSec+1);
+    const cur=$('spCur'); const playBar=document.querySelector('#appview .sp-progress .played');
+    if(cur) cur.textContent=fmt(spNowPlaying.playedSec);
+    if(playBar){ playBar.style.width=((spNowPlaying.playedSec/spNowPlaying.durSec)*100)+'%'; }
+  },1000);
+}
+function stopSpotifyTick(){ if(spTick){clearInterval(spTick);spTick=null;} }
+
+/* ---------- Clock tick ---------- */
+function tickClock(){
+  clearInterval(clockInterval);
+  const update=()=>{
+    const el=$('tokyo'); if(!el){ clearInterval(clockInterval); return; }
+    const d=new Date().toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'Asia/Tokyo'});
+    el.textContent=d;
+  };
+  update(); clockInterval=setInterval(update,1000);
+}
+
+/* ---------- Mini Spotify bar ---------- */
+$('spPlay').addEventListener('click',()=>{
+  spNowPlaying.playing=!spNowPlaying.playing;
+  $('spPlay').textContent=spNowPlaying.playing?'Ⅱ':'▶';
+  if(spNowPlaying.playing) startSpotifyTick(); else stopSpotifyTick();
+});
+$('spMiniOpen').addEventListener('click',()=>openApp('spotifyPlayer'));
+
+/* ================================================================
+   KEYBOARD ESC to close app
+   ================================================================ */
+window.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(pass.classList.contains('show')){ showLock(); }
+    else if(appview.classList.contains('show')){ closeApp(); }
+  }
+});
+
+/* start ticking now-playing */
+startSpotifyTick();
 </script>
-<style>
-#lock{touch-action:pan-y; -webkit-user-select:none;user-select:none}
-#swipe{cursor:pointer;touch-action:manipulation;pointer-events:auto}
-</style>
-<style>
-/* iOS 26 lock-screen layout: full-bleed wallpaper, oversized time, translucent controls */
-#lock{touch-action:none!important;overscroll-behavior:none;background:linear-gradient(180deg,#0002 0%,transparent 32%,#0002 65%,#0005 100%),url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=90') center/cover!important}
-#lock:after{background:linear-gradient(180deg,#00000012 0%,transparent 36%,#00000020 65%,#00000040 100%)}
-.lock .status{height:48px;padding:15px 29px 0;font-size:15px;font-weight:650;color:white}
-.lockdate{margin-top:91px;font-size:21px;font-weight:550;letter-spacing:.1px;text-shadow:0 2px 18px #0008}
-.locktime{font-size:clamp(94px,26vw,112px);font-weight:250;letter-spacing:-7px;line-height:1.02;font-variant-numeric:tabular-nums;text-shadow:0 3px 24px #0006}
-.lockmsg{display:inline-block;margin-top:15px;padding:9px 17px;border:1px solid #ffffff55;border-radius:24px;background:#ffffff25;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);font-size:13px}
-.swipe{bottom:91px;font-size:13px;font-weight:550;padding:16px 0;touch-action:none}
-.chev{font-size:27px}
-.flash,.camera{bottom:29px;width:52px;height:52px;border:1px solid #ffffff55;background:#ffffff35;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);font-size:21px}
-.passcode{padding-top:110px;background:linear-gradient(#17151a55,#17151a77),url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=90') center/cover;color:#fff}
-.passcode:before{content:"";position:absolute;inset:0;background:#16121a66;backdrop-filter:blur(38px);z-index:0;pointer-events:none}
-.passcode>*{position:relative;z-index:1}
-.passcode .status{color:#fff}
-.passcode h3{font-size:20px;font-weight:550;margin:38px 0 0}
-.passcode .dots{gap:19px;margin:28px 0 36px}
-.passcode .dot{width:10px;height:10px;border:1.2px solid #fff;background:transparent}
-.passcode .dot.filled{background:#fff}
-.pad{grid-template-columns:repeat(3,minmax(0,74px));gap:14px 19px}
-.pad button{height:70px;width:70px;justify-self:center;border:1px solid #ffffff55;background:#ffffff28;color:#fff;font-size:30px;font-weight:350;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);touch-action:manipulation;-webkit-tap-highlight-color:transparent;pointer-events:auto;position:relative;z-index:3}
-.pad button:active{background:#ffffff65;transform:scale(.96)}
-.pad-empty{width:70px;height:70px}
-.pad .delete-key{border:0;background:transparent;font-size:13px;font-weight:500}
-.passcode .muted{color:#ffffffd0;margin-top:25px}
-@media(max-height:720px){.passcode{padding-top:70px}.passcode h3{margin-top:20px}.passcode .dots{margin:18px 0 22px}.pad{gap:9px 16px}.pad button,.pad-empty{height:61px;width:61px}}
-</style>
-<script>
-/* Robust unlock fallback. A tap on the swipe prompt or an upward gesture opens passcode. */
-(function(){
- const lock=document.getElementById('lock'), pass=document.getElementById('passcode'), prompt=document.getElementById('swipe');
- if(!lock||!pass)return;
- let y=null;
- function open(){if(pass.style.display!=='block'){pass.style.display='block';if(typeof beginUnlock==='function')beginUnlock();}}
- lock.addEventListener('pointerdown',e=>{y=e.clientY;},{capture:true,passive:true});
- lock.addEventListener('pointerup',e=>{if(y!==null&&y-e.clientY>12)open();y=null;},{capture:true,passive:true});
- lock.addEventListener('touchstart',e=>{y=e.touches[0].clientY;},{capture:true,passive:true});
- lock.addEventListener('touchend',e=>{if(y!==null&&y-e.changedTouches[0].clientY>12)open();y=null;},{capture:true,passive:true});
- prompt.addEventListener('click',open);
- prompt.addEventListener('pointerup',open);
- prompt.addEventListener('touchend',open,{passive:true});
- lock.addEventListener('click',e=>{if(e.target===lock||e.target.closest('#swipe'))open();});
-})();
-</script></body></html>
+</body>
+</html>
